@@ -10,9 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.hfad.openstudio.dummy.DummyContent.DummyItem;
 
-import layout.MyStudioRecyclerViewAdapter;
 
 /**
  * A fragment representing a list of Items.
@@ -68,7 +66,6 @@ public class StudioListFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyStudioRecyclerViewAdapter(DummyContent.ITEMS, mListener));
         }
         return view;
     }
@@ -103,6 +100,6 @@ public class StudioListFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
+
     }
 }
