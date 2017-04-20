@@ -1,9 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.hfad.openstudio.AddStudioActivity">
+    android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <EditText android:id="@+id/name"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dip"
+            android:layout_marginBottom="15dip"
+            android:hint="@string/studio_name"
+            android:inputType="text"/>
+        <EditText android:id="@+id/owner"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dip"
+            android:layout_marginBottom="15dip"
+            android:hint="@string/owner_name"
+            android:inputType="textPersonName"/>
+        <Spinner
+            android:id="@+id/type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dip"
+            android:layout_marginBottom="15dip"
+            android:entries="@array/studio_type_array"
+            android:prompt="@string/type" />
+        <EditText android:id="@+id/address"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dip"
+            android:hint="@string/address"
+            android:layout_marginBottom="15dip"
+            android:inputType="textPostalAddress"/>
+        <EditText android:id="@+id/contactInfo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dip"
+            android:layout_marginBottom="15dip"
+            android:hint="@string/contact_info"
+            android:inputType="textEmailAddress"/>
+        <EditText android:id="@+id/availability"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dip"
+            android:layout_marginBottom="15dip"
+            android:hint="@string/availability"
+            android:inputType="text"/>
+        <Spinner
+            android:id="@+id/accessibility"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dip"
+            android:layout_marginBottom="15dip"
+            android:entries="@array/accessibility_array"
+            android:prompt="@string/accessibility" />
+        <EditText android:id="@+id/description"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dip"
+            android:layout_marginBottom="15dip"
+            android:minLines="4"
+            android:maxLines="4"
+            android:isScrollContainer="true"
+            android:gravity="top"
+            android:hint="@string/description"
+            android:inputType="textMultiLine|textCapSentences"/>
+        <EditText android:id="@+id/lat"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dip"
+            android:layout_marginBottom="15dip"
+            android:hint="Latitude"
+            android:inputType="numberDecimal"/>
+        <EditText android:id="@+id/lng"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dip"
+            android:layout_marginBottom="15dip"
+            android:hint="Longitude"
+            android:inputType="numberDecimal"/>
+        <Button android:id="@+id/add_studio"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_studio"/>
+    </LinearLayout>
+
+</ScrollView>
