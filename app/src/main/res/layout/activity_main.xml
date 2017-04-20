@@ -4,21 +4,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context="com.hfad.openstudio.MainActivity">
 
+    <ImageView
+        android:layout_width="96dp"
+        android:layout_height="84dp"
+        android:src="@drawable/open_studio_logo"
+       />
     <Button
         android:id="@+id/nav_to_map"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:text="@string/find_studio_test_button"
-        android:onClick="onClickNavFindStudio"/>
+        android:onClick="onClickNavFindStudio"
+        />
 
     <Button
         android:id="@+id/add_studio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:text="Add Studio"
         android:onClick="onClickAddStudio"/>
 
