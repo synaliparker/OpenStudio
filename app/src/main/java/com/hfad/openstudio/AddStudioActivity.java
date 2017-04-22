@@ -1,10 +1,8 @@
 package com.hfad.openstudio;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -24,9 +22,9 @@ import android.widget.Toast;
  * <a href="http://www.androidhive.info/2012/05/how-to-connect-android-with-php-mysql/">NewProductActivity</a>.
  */
 public class AddStudioActivity extends Activity {
-    private static String urlCreateStudio = "http://open-studio.herokuapp.com/add_studio.php";
+    private static String addStudioPath = "add_studio.php";
     private static final String TAG_SUCCESS = "success";
-    JSONParser jsonParser = new JSONParser();
+    HttpRequestHandler httpRequestHandler = new HttpRequestHandler();
     EditText inputName;
     EditText inputOwner;
     Spinner inputStudioType;
@@ -74,7 +72,7 @@ public class AddStudioActivity extends Activity {
         });
     }
 
-    class PostStudioTask extends AsyncTask<String, Void, Integer> {
+    private class PostStudioTask extends AsyncTask<String, Void, Integer> {
 
         @Override
         protected void onPreExecute() {
@@ -82,19 +80,19 @@ public class AddStudioActivity extends Activity {
 
         @Override
         protected Integer doInBackground(String... args) {
-            List<NameValuePair> params = new ArrayList<NameValuePair>();
-            params.add(new BasicNameValuePair("name", args[0]));
-            params.add(new BasicNameValuePair("owner", args[1]));
-            params.add(new BasicNameValuePair("type", args[2]));
-            params.add(new BasicNameValuePair("address", args[3]));
-            params.add(new BasicNameValuePair("contact_info", args[4]));
-            params.add(new BasicNameValuePair("availability", args[5]));
-            params.add(new BasicNameValuePair("accessibility", args[6]));
-            params.add(new BasicNameValuePair("description", args[7]));
-            params.add(new BasicNameValuePair("lat", args[8]));
-            params.add(new BasicNameValuePair("lng", args[9]));
+            Map<String, String> params = new HashMap<>();
+            params.put("name", args[0]);
+            params.put("owner", args[1]);
+            params.put("type", args[2]);
+            params.put("address", args[3]);
+            params.put("contact_info", args[4]);
+            params.put("availability", args[5]);
+            params.put("accessibility", args[6]);
+            params.put("description", args[7]);
+            params.put("lat", args[8]);
+            params.put("lng", args[9]);
 
-            JSONObject json = jsonParser.makeHttpRequest(urlCreateStudio,
+            JSONObject json = httpRequestHandler.makeHttpRequest(addStudioPath,
                     "POST", params);
             Log.d("Create Response", json.toString());
 
