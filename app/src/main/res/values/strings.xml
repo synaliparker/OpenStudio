@@ -11,6 +11,8 @@
     <string name="availability">Days and Times Available</string>
     <string name="accessibility">Accessibility</string>
     <string name="description">Description</string>
+    <string name="find_studio">Find Studio</string>
+    <string name="studio_list_view">Show Studios List</string>
     <string-array name="studio_type_array">
         <item>Photography Studio</item>
         <item>Sewing Studio</item>
@@ -25,4 +27,5 @@
         <item>N/A</item>
     </string-array>
     <string name="add_studio">Add Studio</string>
+    <string name="title_activity_studio_list">StudioListActivity</string>
 </resources>

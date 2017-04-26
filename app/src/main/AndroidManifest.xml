@@ -30,6 +30,11 @@
             android:value="AIzaSyAGtFE78EI-iQ7OUbgf9pLAlu3ICB6dXz4" />
 
         <activity android:name=".MapFragment"></activity>
+            android:value="AIzaSyAGtFE78EI-iQ7OUbgf9pLAlu3ICB6dXz4" />
+
+        <activity
+            android:name=".StudioListActivity"
+            android:label="@string/title_activity_studio_list"></activity>
     </application>
 
 </manifest>
