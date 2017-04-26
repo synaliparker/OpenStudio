@@ -24,10 +24,15 @@
         </activity>
         <activity android:name=".FindStudioActivity" />
         <activity android:name=".DetailStudioActivity" />
-        <activity android:name=".AddStudioActivity"></activity>
+        <activity android:name=".AddStudioActivity" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAGtFE78EI-iQ7OUbgf9pLAlu3ICB6dXz4"/>
+            android:value="AIzaSyAGtFE78EI-iQ7OUbgf9pLAlu3ICB6dXz4" />
+
+        <activity
+            android:name=".StudioListActivity"
+            android:label="@string/title_activity_studio_list"></activity>
     </application>
 
 </manifest>

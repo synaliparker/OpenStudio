@@ -22,4 +22,20 @@
         android:text="Add Studio"
         android:onClick="onClickAddStudio"/>
 
+    <Button
+        android:id="@+id/studio_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:text="StudioList"
+        android:onClick="onClickStudioList"/>
+
+    <!--<Button-->
+        <!--android:id="@+id/studio_list_view"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:onClick="onClickStudioListFragment"-->
+        <!--android:orientation="vertical"-->
+        <!--android:text="@string/studio_list_view" />-->
+
 </LinearLayout>

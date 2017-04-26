@@ -23,4 +23,10 @@ public class MainActivity extends Activity {
         Intent intent = new Intent(this, AddStudioActivity.class);
         startActivity(intent);
     }
+
+    public void onClickStudioList(View view) {
+        Intent intent = new Intent(this, StudioListActivity.class);
+        startActivity(intent);
+    }
+
 }
