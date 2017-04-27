@@ -1,6 +1,8 @@
 package com.hfad.openstudio;
 
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.json.JSONException;
@@ -8,6 +10,8 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -49,8 +53,8 @@ public class AddStudioActivity extends Activity {
         inputAvailability = (EditText) findViewById(R.id.availability);
         inputAccessibility = (Spinner) findViewById(R.id.accessibility);
         inputDescription = (EditText) findViewById(R.id.description);
-        inputLat = (EditText) findViewById(R.id.lat);
-        inputLng = (EditText) findViewById(R.id.lng);
+//        inputLat = (EditText) findViewById(R.id.lat);
+//        inputLng = (EditText) findViewById(R.id.lng);
 
         Button addStudioButton = (Button) findViewById(R.id.add_studio);
         addStudioButton.setOnClickListener(new View.OnClickListener() {
@@ -64,10 +68,10 @@ public class AddStudioActivity extends Activity {
                 String availability = inputAvailability.getText().toString();
                 String accessibility = inputAccessibility.getSelectedItem().toString();
                 String description = inputDescription.getText().toString();
-                String lat = inputLat.getText().toString();
-                String lng = inputLng.getText().toString();
+//                String lat = inputLat.getText().toString();
+//                String lng = inputLng.getText().toString();
                 new PostStudioTask().execute(name, owner, studioType, address, email,
-                        availability, accessibility, description, lat, lng);
+                        availability, accessibility, description);
             }
         });
     }
@@ -80,6 +84,18 @@ public class AddStudioActivity extends Activity {
 
         @Override
         protected Integer doInBackground(String... args) {
+            double latitude = 0.00;
+            double longitude = 0.00;
+            try {
+                Geocoder geocoder = new Geocoder(AddStudioActivity.this);
+                List<Address> addresses;
+                addresses = geocoder.getFromLocationName(args[3], 1);
+                if (addresses.size() > 0) {
+                    latitude = addresses.get(0).getLatitude();
+                    longitude = addresses.get(0).getLongitude();
+                }
+            } catch (IOException e) {
+            }
             Map<String, String> params = new HashMap<>();
             params.put("name", args[0]);
             params.put("owner", args[1]);
@@ -89,8 +105,8 @@ public class AddStudioActivity extends Activity {
             params.put("availability", args[5]);
             params.put("accessibility", args[6]);
             params.put("description", args[7]);
-            params.put("lat", args[8]);
-            params.put("lng", args[9]);
+            params.put("lat", String.valueOf(latitude));
+            params.put("lng", String.valueOf(longitude));
 
             JSONObject json = httpRequestHandler.makeHttpRequest(addStudioPath,
                     "POST", params);
