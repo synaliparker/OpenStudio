@@ -71,25 +71,11 @@
             android:isScrollContainer="true"
             android:gravity="top"
             android:hint="@string/description"/>
-            <!--android:inputType="textMultiLine|textCapSentences"-->
-
-        <!--<EditText android:id="@+id/lat"-->
-            <!--android:layout_width="fill_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_margin="5dip"-->
-            <!--android:layout_marginBottom="15dip"-->
-            <!--android:hint="Latitude"-->
-            <!--android:inputType="numberDecimal"/>-->
-        <!--<EditText android:id="@+id/lng"-->
-            <!--android:layout_width="fill_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_margin="5dip"-->
-            <!--android:layout_marginBottom="15dip"-->
-            <!--android:hint="Longitude"-->
-            <!--android:inputType="numberDecimal"/>-->
         <Button android:id="@+id/add_studio"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:background="@color/btn_logut_bg"
+            android:textColor="@color/white"
             android:text="@string/add_studio"/>
     </LinearLayout>
 

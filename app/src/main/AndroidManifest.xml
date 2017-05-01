@@ -46,6 +46,7 @@
         <activity
             android:name=".UserHomeScreenActivity"
             android:label="@string/title_activity_user_home_screen"></activity>
+        <activity android:name=".ImageDetailActivity"></activity>
     </application>
 
 </manifest>
