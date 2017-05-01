@@ -62,6 +62,7 @@ public class AddStudioActivity extends Activity {
                     if (input.getText().toString().length() == 0) {
                         input.setError("Field is required");
                         addStudioButton.setClickable(true);
+                        return;
                     }
                 }
                 String name = inputName.getText().toString();
