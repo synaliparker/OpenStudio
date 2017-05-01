@@ -50,14 +50,17 @@ class HttpRequestHandler {
 
             } else if(method.equals(GET)){
                 URL url = new URL(OPENSTUDIO_URL + path + "?" + encodedParams);
+                Log.d("URL", url.toString());
                 con = (HttpURLConnection) url.openConnection();
                 con.setRequestMethod(GET);
             }
             BufferedReader reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            Log.d("Input", con.getInputStream().toString());
             StringBuilder sb = new StringBuilder();
             String line;
             while ((line = reader.readLine()) != null) {
                 sb.append(line + "\n");
+                Log.d("line", line);
             }
             json = sb.toString();
             con.disconnect();

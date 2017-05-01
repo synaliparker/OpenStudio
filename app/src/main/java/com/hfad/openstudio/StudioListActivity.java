@@ -10,10 +10,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -45,17 +48,27 @@ public class StudioListActivity extends ListActivity {
 
         studioList = new ArrayList<HashMap<String, String>>();
         new LoadAllStudios().execute();
+        ListView lv = getListView();
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String studioId = ((TextView) view.findViewById(R.id.id)).getText().toString();
+                Intent intent = new Intent(getApplicationContext(), DetailStudioActivity.class);
+                intent.putExtra(TAG_ID, studioId);
+                startActivity(intent);
+            }
+        });
     }
-    //If a product has been changed the page will be reloaded.
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data){
-        super.onActivityResult(requestCode,resultCode,data);
-        if(resultCode == 100){
-            Intent intent = getIntent();
-            finish();
-            startActivity(intent);
-        }
-    }
+//    //If a product has been changed the page will be reloaded.
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data){
+//        super.onActivityResult(requestCode,resultCode,data);
+//        if(resultCode == 100){
+//            Intent intent = getIntent();
+//            finish();
+//            startActivity(intent);
+//        }
+//    }
 
     class LoadAllStudios extends AsyncTask<String,String,String> {
 
@@ -87,7 +100,7 @@ public class StudioListActivity extends ListActivity {
                         String name = jsonObject.getString(TAG_NAME);
                         String type = jsonObject.getString(TAG_TYPE);
 
-                        HashMap<String, String> hashMap = new HashMap<String, String>();
+                        HashMap<String, String> hashMap = new HashMap<>();
                         hashMap.put(TAG_ID, id);
                         hashMap.put(TAG_NAME, name);
                         hashMap.put(TAG_TYPE,type);

@@ -2,7 +2,7 @@
     <string name="app_name">OpenStudio</string>
     <string name="studio_text">Search studios</string>
     <string name="location_text">Search location</string>
-    <string name="find_studio_test_button">Navigate to Find Studio</string>
+    <string name="find_studio_test_button">Find Studios</string>
     <string name="studio_name">Studio Name</string>
     <string name="owner_name">Owner Name</string>
     <string name="type">Studio Type</string>
@@ -13,7 +13,7 @@
     <string name="description">Description</string>
     <string name="find_studio">Find Studio</string>
     <string name="studio_list_view">Show Studios List</string>
-    //user login/registration strings
+    <!--user login/registration strings-->
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
     <string name="hint_name">Full Name</string>
@@ -25,10 +25,12 @@
     <string name="welcome">Welcome</string>
     <string name="btn_logout">LOGOUT</string>
     <string-array name="studio_type_array">
-        <item>Photography Studio</item>
-        <item>Sewing Studio</item>
-        <item>Painting Studio</item>
-        <item>Ceramics Studio</item>
+        <item>Photography</item>
+        <item>Textiles</item>
+        <item>Sewing</item>
+        <item>Painting</item>
+        <item>Ceramics</item>
+        <item>Sculpture</item>
     </string-array>
     <string-array name="accessibility_array">
         <item>Wheelchair accessible</item>
@@ -38,8 +40,8 @@
         <item>N/A</item>
     </string-array>
     <string name="add_studio">Add Studio</string>
-    <string name="title_activity_studio_list">StudioListActivity</string>
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="title_activity_register">RegisterActivity</string>
-    <string name="title_activity_user_home_screen">UserHomeScreenActivity</string>
+    <string name="title_activity_studio_list">Studio List</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_register">Register</string>
+    <string name="title_activity_user_home_screen">Home</string>
 </resources>
