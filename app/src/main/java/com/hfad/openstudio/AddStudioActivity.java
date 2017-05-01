@@ -37,8 +37,6 @@ public class AddStudioActivity extends Activity {
     EditText inputAvailability;
     Spinner inputAccessibility;
     EditText inputDescription;
-    EditText inputLat;
-    EditText inputLng;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,23 +51,27 @@ public class AddStudioActivity extends Activity {
         inputAvailability = (EditText) findViewById(R.id.availability);
         inputAccessibility = (Spinner) findViewById(R.id.accessibility);
         inputDescription = (EditText) findViewById(R.id.description);
-//        inputLat = (EditText) findViewById(R.id.lat);
-//        inputLng = (EditText) findViewById(R.id.lng);
 
-        Button addStudioButton = (Button) findViewById(R.id.add_studio);
+        final Button addStudioButton = (Button) findViewById(R.id.add_studio);
         addStudioButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                addStudioButton.setClickable(false);
+                EditText[] inputs = {inputName, inputOwner, inputAddress, inputEmail, inputAvailability, inputDescription};
+                for (EditText input : inputs) {
+                    if (input.getText().toString().length() == 0) {
+                        input.setError("Field is required");
+                        addStudioButton.setClickable(true);
+                    }
+                }
                 String name = inputName.getText().toString();
                 String owner = inputOwner.getText().toString();
                 String studioType = inputStudioType.getSelectedItem().toString();
-                String address = inputDescription.getText().toString();
+                String address = inputAddress.getText().toString();
                 String email = inputEmail.getText().toString();
                 String availability = inputAvailability.getText().toString();
                 String accessibility = inputAccessibility.getSelectedItem().toString();
                 String description = inputDescription.getText().toString();
-//                String lat = inputLat.getText().toString();
-//                String lng = inputLng.getText().toString();
                 new PostStudioTask().execute(name, owner, studioType, address, email,
                         availability, accessibility, description);
             }
@@ -93,8 +95,11 @@ public class AddStudioActivity extends Activity {
                 if (addresses.size() > 0) {
                     latitude = addresses.get(0).getLatitude();
                     longitude = addresses.get(0).getLongitude();
+                } else {
+                    return 3;
                 }
             } catch (IOException e) {
+                return 2;
             }
             Map<String, String> params = new HashMap<>();
             params.put("name", args[0]);
@@ -122,19 +127,32 @@ public class AddStudioActivity extends Activity {
 
         @Override
         protected void onPostExecute(Integer status) {
-            if (status == 1) {
-                Toast toast = Toast.makeText(AddStudioActivity.this, "Studio added successfully", Toast.LENGTH_SHORT);
-                toast.show();
-                Intent i = new Intent(getApplicationContext(), AddStudioActivity.class);
-                startActivity(i);
-                finish();
-            } else if (status == 0) {
+            if (status == 0) {
                 Toast toast = Toast.makeText(AddStudioActivity.this, "Failed to add studio", Toast.LENGTH_SHORT);
                 toast.show();
+                refreshAddForm();
+            } else if (status == 1) {
+                Toast toast = Toast.makeText(AddStudioActivity.this, "Studio added successfully", Toast.LENGTH_SHORT);
+                toast.show();
+                refreshAddForm();
+            } else if (status == 2) {
+                Toast toast = Toast.makeText(AddStudioActivity.this, "Failed to convert address to coordinates", Toast.LENGTH_SHORT);
+                toast.show();
+                refreshAddForm();
+            } else if (status == 3) {
+                Toast toast = Toast.makeText(AddStudioActivity.this, "Invalid address", Toast.LENGTH_SHORT);
+                toast.show();
+                refreshAddForm();
             } else {
-                    Toast toast = Toast.makeText(AddStudioActivity.this, "JSON error", Toast.LENGTH_SHORT);
-                    toast.show();
+                Toast toast = Toast.makeText(AddStudioActivity.this, "JSON error", Toast.LENGTH_SHORT);
+                toast.show();
+                refreshAddForm();
             }
         }
+    }
+    void refreshAddForm() {
+        Intent i = new Intent(getApplicationContext(), AddStudioActivity.class);
+        startActivity(i);
+        finish();
     }
 }
