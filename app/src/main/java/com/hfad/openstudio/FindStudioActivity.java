@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v4.app.FragmentActivity;
+import android.view.View;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -120,5 +121,10 @@ public class FindStudioActivity extends FragmentActivity implements OnMapReadyCa
             MarkerOptions marker = new MarkerOptions().position(new LatLng(lat, lng)).title(name);
             googleMap.addMarker(marker);
         }
+    }
+
+    public void onClickStudioList(View view) {
+        Intent intent = new Intent(this, StudioListActivity.class);
+        startActivity(intent);
     }
 }

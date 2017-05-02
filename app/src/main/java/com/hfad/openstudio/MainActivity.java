@@ -14,18 +14,13 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
     }
 
-    public void onClickNavFindStudio(View view){
+    public void onClickFindStudio(View view){
         Intent intent = new Intent(this, FindStudioActivity.class);
         startActivity(intent);
     }
 
     public void onClickAddStudio(View view){
         Intent intent = new Intent(this, AddStudioActivity.class);
-        startActivity(intent);
-    }
-
-    public void onClickStudioList(View view) {
-        Intent intent = new Intent(this, StudioListActivity.class);
         startActivity(intent);
     }
 
