@@ -68,7 +68,7 @@ public class FindStudioActivity extends FragmentActivity implements GoogleMap.On
         protected String doInBackground(String...args) {
             Map<String, String> params = new HashMap<>();
 
-            JSONObject json = httpRequestHandler.makeHttpRequest(GET_URL_PATH, "GET", params);
+            JSONObject json = httpRequestHandler.makeHttpRequest(GET_STUDIOS_URL, "GET", params);
 
             try {
                 int success = json.getInt(TAG_SUCCESS);
@@ -80,6 +80,7 @@ public class FindStudioActivity extends FragmentActivity implements GoogleMap.On
                         HashMap<String, String> hashMap = new HashMap<String,String>();
                         hashMap.put(TAG_ID,jsonObject.getString(TAG_ID));
                         hashMap.put(TAG_NAME,jsonObject.getString(TAG_NAME));
+                        hashMap.put(TAG_TYPE, jsonObject.getString(TAG_TYPE));
                         hashMap.put(TAG_LAT,jsonObject.getString(TAG_LAT));
                         hashMap.put(TAG_LNG,jsonObject.getString(TAG_LNG));
                         locationList.add(hashMap);
@@ -110,6 +111,7 @@ public class FindStudioActivity extends FragmentActivity implements GoogleMap.On
     public void onMapReady(GoogleMap map) {
         googleMap = map;
         setUpMap();
+        googleMap.setOnInfoWindowClickListener(this);
     }
 
     public void setUpMap() {
@@ -122,11 +124,22 @@ public class FindStudioActivity extends FragmentActivity implements GoogleMap.On
 
         // marker loop
         for (int i = 0; i < locationList.size(); i++) {
+            String id = locationList.get(i).get(TAG_ID);
             lat = Double.parseDouble(locationList.get(i).get(TAG_LAT));
             lng = Double.parseDouble(locationList.get(i).get(TAG_LNG));
             String name = locationList.get(i).get(TAG_NAME);
-            MarkerOptions marker = new MarkerOptions().position(new LatLng(lat, lng)).title(name);
-            googleMap.addMarker(marker);
+            String type = locationList.get(i).get(TAG_TYPE);
+            Marker marker = googleMap.addMarker(new MarkerOptions().position(new LatLng(lat, lng)).title(name).snippet(type));
+            markerMap.put(marker, id);
         }
+    }
+
+    @Override
+    public void onInfoWindowClick(Marker marker){
+        String studioId = markerMap.get(marker);
+        Log.d("id", studioId);
+        Intent intent = new Intent(getApplicationContext(), DetailStudioActivity.class);
+        intent.putExtra(TAG_ID, studioId);
+        startActivity(intent);
     }
 }
