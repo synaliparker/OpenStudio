@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v4.app.FragmentActivity;
+import android.view.View;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -134,6 +135,11 @@ public class FindStudioActivity extends FragmentActivity implements GoogleMap.On
         }
     }
 
+    public void onClickStudioList(View view) {
+        Intent intent = new Intent(this, StudioListActivity.class);
+        startActivity(intent);
+    }
+}
     @Override
     public void onInfoWindowClick(Marker marker){
         String studioId = markerMap.get(marker);

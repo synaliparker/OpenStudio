@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    tools:context="com.hfad.openstudio.FindStudioActivity">
+    tools:context="com.hfad.openstudio.FindStudioActivity"
+    android:weightSum="1">
     <Spinner
         android:id="@+id/type_select"
         android:layout_width="match_parent"
@@ -19,19 +20,39 @@
         android:paddingBottom="10dip"
         android:entries="@array/studio_search_array"
         android:prompt="@string/type" />
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+         >
     <Button
         android:id="@+id/find_studio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dip"
+        android:background="@color/btn_login"
+        android:drawableLeft="@android:drawable/ic_menu_search"
         android:paddingLeft="10dip"
         android:paddingRight="10dip"
-        android:layout_marginBottom="10dip"
-        android:background="@color/btn_login"
-        android:textColor="@color/white"
         android:text="Find Studios"
-        android:drawableLeft="@android:drawable/ic_menu_search" />
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/studio_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:background="@color/main_btn"
+        android:onClick="onClickStudioList"
+        android:orientation="vertical"
+        android:layout_marginLeft="25dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dip"
+        android:text="Studio List"
+        android:textColor="@color/white" />
+</LinearLayout>
+
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
