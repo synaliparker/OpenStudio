@@ -48,7 +48,9 @@ public class DetailStudioActivity extends Activity {
     private static final String TAG_AVAIL = "availability";
     private static final String TAG_ACCESS = "accessibility";
     private static final String TAG_DESCRIPTION = "description";
+
     String studioId;
+    HttpRequestHandler httpRequestHandler = new HttpRequestHandler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +63,7 @@ public class DetailStudioActivity extends Activity {
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
         getStudioDetails(studioId.toString());
+//        new GetStudioDetails().execute();
         txtMorePhotos = (TextView) findViewById(R.id.more_photos);
         txtMorePhotos.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,6 +137,16 @@ public class DetailStudioActivity extends Activity {
                 hideDialog();
             }
         }) {
+
+//            @Override
+//            protected Map<String, String> getParams() {
+//                // Posting parameters to login url
+//                Map<String, String> params = new HashMap<String, String>();
+//                params.put("id", studioId);
+//
+//                return params;
+//            }
+
         };
 
         // Adding request to request queue
@@ -151,3 +164,105 @@ public class DetailStudioActivity extends Activity {
             pDialog.dismiss();
     }
 }
+
+//    /**
+//     * Background Async Task to Get complete product details
+//     * */
+//    class GetStudioDetails extends AsyncTask<String, String, String> {
+//
+//        /**
+//         * Before starting background thread Show Progress Dialog
+//         * */
+//        @Override
+//        protected void onPreExecute() {
+//            super.onPreExecute();
+//            pDialog = new ProgressDialog(DetailStudioActivity.this);
+//            pDialog.setMessage("Loading studio details. Please wait...");
+//            pDialog.setIndeterminate(false);
+//            pDialog.setCancelable(true);
+//            pDialog.show();
+//        }
+//
+//        /**
+//         * Getting product details in background thread
+//         * */
+//        protected String doInBackground(String... params) {
+//
+//            // updating UI from Background Thread
+//            runOnUiThread(new Runnable() {
+//                public void run() {
+//                    // Check for success tag
+//                    int success;
+//                    try {
+//                        // Building Parameters
+//                        HashMap<String, String> hashMap = new HashMap<>();
+//                        hashMap.put(TAG_ID, studio_id.toString());
+//
+//                        // getting product details by making HTTP request
+//                        // Note that product details url will use GET request
+//                        JSONObject json = httpRequestHandler.makeHttpRequest(
+//                                STUDIO_DETAIL_PATH, "GET", hashMap);
+//                        Log.d("JSON", json.toString());
+//
+//                        // json success tag
+//                        try {
+//                            success = json.getInt(TAG_SUCCESS);
+//                            Log.d("success", String.valueOf(success));
+//                        } catch (JSONException e) {
+//                            Log.d("Error", "JSON exception");
+//                            success = 3;
+//                        }
+//                        if (success == 1) {
+//                            // successfully received product details
+//                            JSONArray studioDetails = json
+//                                    .getJSONArray(TAG_STUDIOS); // JSON Array
+//                            JSONObject studio = studioDetails.getJSONObject(0);
+//                            for (int i = 0; i < studioDetails.length(); i++) {
+//                                Log.d("id tag", studioDetails.getJSONObject(i).getString(TAG_ID));
+//                                if (studioDetails.getJSONObject(i).getString(TAG_ID).equals(studio_id)) {
+//                                    studio = studioDetails.getJSONObject(i);
+//                                }
+//                            }
+//
+//                            // product with this pid found
+//                            // Edit Text
+//                            txtName = (TextView) findViewById(R.id.studio_name);
+//                            txtType = (TextView) findViewById(R.id.studio_type);
+//                            txtOwner = (TextView) findViewById(R.id.studio_owner);
+//                            txtAddress = (TextView) findViewById(R.id.studio_address);
+//                            txtEmail = (TextView) findViewById(R.id.studio_contact);
+//                            txtAvailability = (TextView) findViewById(R.id.studio_availability);
+//                            txtAccessibility = (TextView) findViewById(R.id.studio_accessibility);
+//                            txtDescription = (TextView) findViewById(R.id.studio_description);
+//
+//                            // display product data in EditText
+//                            txtName.setText(studio.getString(TAG_NAME));
+//                            txtType.setText(studio.getString(TAG_TYPE));
+//                            txtOwner.setText(studio.getString(TAG_OWNER));
+//                            txtAddress.setText("Address: " + studio.getString(TAG_ADDRESS));
+//                            txtEmail.setText("Email: " + studio.getString(TAG_CONTACT));
+//                            txtAvailability.setText("Availability: " + studio.getString(TAG_AVAIL));
+//                            txtAccessibility.setText("Accessibility: " + studio.getString(TAG_ACCESS));
+//                            txtDescription.setText("Description: " + studio.getString(TAG_DESCRIPTION));
+//
+//                        }else{
+//                            // product with pid not found
+//                        }
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            });
+//
+//            return null;
+//        }
+//
+//        /**
+//         * After completing background task Dismiss the progress dialog
+//         * **/
+//        protected void onPostExecute(String file_url) {
+//            // dismiss the dialog once got all details
+//            pDialog.dismiss();
+//        }
+//    }
+
