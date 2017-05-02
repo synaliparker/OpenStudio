@@ -27,7 +27,7 @@ import java.util.Map;
 public class StudioListActivity extends ListActivity {
 
     private ProgressDialog progressDialog;
-    private static String GET_ALL_STUDIOS_PATH = "get_all_studios.php";
+    private static String GET_STUDIOS_URL = "http://open-studio.herokuapp.com/get_all_studios.php";
     // JSON Node names
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_STUDIOS = "studios";
@@ -59,16 +59,6 @@ public class StudioListActivity extends ListActivity {
             }
         });
     }
-//    //If a product has been changed the page will be reloaded.
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, Intent data){
-//        super.onActivityResult(requestCode,resultCode,data);
-//        if(resultCode == 100){
-//            Intent intent = getIntent();
-//            finish();
-//            startActivity(intent);
-//        }
-//    }
 
     class LoadAllStudios extends AsyncTask<String,String,String> {
 
@@ -85,7 +75,7 @@ public class StudioListActivity extends ListActivity {
         protected String doInBackground(String...args) {
             Map<String, String> params = new HashMap<>();
 
-            JSONObject json = httpRequestHandler.makeHttpRequest(GET_ALL_STUDIOS_PATH, "GET", params);
+            JSONObject json = httpRequestHandler.makeHttpRequest(GET_STUDIOS_URL, "GET", params);
             Log.d("All Studios:", json.toString());
 
             try {

@@ -40,7 +40,7 @@ class HttpRequestHandler {
         HttpURLConnection con = null;
         try {
             if(method.equals(POST)) {
-                URL url = new URL(OPENSTUDIO_URL + path);
+                URL url = new URL(path);
                 con = (HttpURLConnection) url.openConnection();
                 con.setRequestMethod(POST);
                 con.setDoOutput(true);
@@ -49,7 +49,7 @@ class HttpRequestHandler {
                 writer.flush();
 
             } else if(method.equals(GET)){
-                URL url = new URL(OPENSTUDIO_URL + path + "?" + encodedParams);
+                URL url = new URL(path + "?" + encodedParams);
                 Log.d("URL", url.toString());
                 con = (HttpURLConnection) url.openConnection();
                 con.setRequestMethod(GET);
@@ -73,6 +73,7 @@ class HttpRequestHandler {
         } catch (JSONException e) {
             Log.e("JSON Parser", "Error parsing data " + e.toString());
         }
+        Log.d("object", jObj.toString());
         return jObj;
     }
 

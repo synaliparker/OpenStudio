@@ -18,7 +18,7 @@
         android:paddingRight="10dip"
         android:paddingTop="10dip"
         android:paddingBottom="10dip"
-        android:entries="@array/studio_type_array"
+        android:entries="@array/studio_search_array"
         android:prompt="@string/type" />
     <LinearLayout
         android:layout_width="match_parent"

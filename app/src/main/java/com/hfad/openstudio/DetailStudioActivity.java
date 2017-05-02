@@ -27,7 +27,6 @@ import java.util.Map;
 public class DetailStudioActivity extends Activity {
     private static final String TAG = RegisterActivity.class.getSimpleName();
     private ProgressDialog pDialog;
-    private static final String STUDIO_DETAIL_PATH = "get_studio_details.php";
     private static final String STUDIO_DETAIL_URL = "http://open-studio.herokuapp.com/get_studio_details.php?id=";
     private TextView txtName;
     private TextView txtType;
@@ -39,8 +38,6 @@ public class DetailStudioActivity extends Activity {
     private TextView txtAccessibility;
     private TextView txtDescription;
 
-    private static final String TAG_SUCCESS = "success";
-    private static final String TAG_STUDIOS = "studios";
     private static final String TAG_STUDIO = "studio";
     private static final String TAG_NAME = "name";
     private static final String TAG_ID = "id";
