@@ -3,6 +3,8 @@ package com.hfad.openstudio;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -14,7 +16,29 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
     }
 
-    public void onClickFindStudio(View view){
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.add_studio:
+                //Code to run when the Create Order item is clicked
+                Intent intent = new Intent(this, AddStudioActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_settings:
+                //Code to run when the settings item is clicked
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    public void onClickFindStudio(View view) {
         Intent intent = new Intent(this, FindStudioActivity.class);
         startActivity(intent);
     }
@@ -28,5 +52,4 @@ public class MainActivity extends Activity {
         Intent intent = new Intent(this,LoginActivity.class);
         startActivity(intent);
     }
-
 }

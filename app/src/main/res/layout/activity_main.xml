@@ -44,8 +44,6 @@
         android:text="Add Studio"
         android:onClick="onClickAddStudio"/>
 
-
-
     <Button
         android:id="@+id/login"
         android:layout_width="wrap_content"

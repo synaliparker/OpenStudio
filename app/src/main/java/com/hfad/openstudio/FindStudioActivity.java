@@ -6,6 +6,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v4.app.FragmentActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.util.Log;
 import android.view.View;
@@ -55,6 +57,28 @@ public class FindStudioActivity extends FragmentActivity implements GoogleMap.On
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         new GetLocationTask().execute();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.add_studio:
+                //Code to run when the Create Order item is clicked
+                Intent intent = new Intent(this, AddStudioActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_settings:
+                //Code to run when the settings item is clicked
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     class GetLocationTask extends AsyncTask<String,String,String> {
