@@ -17,13 +17,13 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingTop="6dip"
-        android:paddingLeft="6dip"
         android:textSize="17dip"
         android:textStyle="bold" />
     <TextView
         android:id="@+id/type"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textSize="17dip" />
+        android:textSize="17dip"
+        android:textColor="#6f7682"/>
 
 </LinearLayout>

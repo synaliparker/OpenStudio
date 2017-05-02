@@ -65,7 +65,7 @@ public class DetailStudioActivity extends Activity {
         Log.d("ID", studioId);
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
-        getStudioDetails(studioId.toString());
+        getStudioDetails(studioId);
 //        new GetStudioDetails().execute();
         txtMorePhotos = (TextView) findViewById(R.id.more_photos);
         txtMorePhotos.setOnClickListener(new View.OnClickListener() {
@@ -77,7 +77,7 @@ public class DetailStudioActivity extends Activity {
         });
     }
 
-    private void getStudioDetails(final String studioId) {
+    public void getStudioDetails(final String studioId) {
         // Tag used to cancel the request
         String tag_string_req = "req_details";
 

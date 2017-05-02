@@ -6,12 +6,18 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.json.JSONArray;
@@ -22,15 +28,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FindStudioActivity extends FragmentActivity implements OnMapReadyCallback {
+public class FindStudioActivity extends FragmentActivity implements GoogleMap.OnInfoWindowClickListener, OnMapReadyCallback {
     private ProgressDialog progressDialog;
     private GoogleMap googleMap;
+    private HashMap<Marker, String> markerMap = new HashMap<>();
     private Double lat = 0.00;
     private Double lng = 0.00;
     private static String GET_URL_PATH = "get_all_studios.php";
     private static final String TAG_STUDIOS = "studios";
     private static final String TAG_ID = "id";
     private static final String TAG_NAME = "name";
+    private static final String TAG_TYPE = "type";
     private static final String TAG_LAT = "lat";
     private static final String TAG_LNG = "lng";
     private static final String TAG_SUCCESS = "success";
@@ -72,6 +80,7 @@ public class FindStudioActivity extends FragmentActivity implements OnMapReadyCa
                         HashMap<String, String> hashMap = new HashMap<String,String>();
                         hashMap.put(TAG_ID,jsonObject.getString(TAG_ID));
                         hashMap.put(TAG_NAME,jsonObject.getString(TAG_NAME));
+                        hashMap.put(TAG_TYPE, jsonObject.getString(TAG_TYPE));
                         hashMap.put(TAG_LAT,jsonObject.getString(TAG_LAT));
                         hashMap.put(TAG_LNG,jsonObject.getString(TAG_LNG));
                         locationList.add(hashMap);
@@ -93,15 +102,13 @@ public class FindStudioActivity extends FragmentActivity implements OnMapReadyCa
                     getSupportFragmentManager().findFragmentById(R.id.map));
             fragment.getMapAsync(FindStudioActivity.this);
         }
-
-
     }
-
 
     @Override
     public void onMapReady(GoogleMap map) {
         googleMap = map;
         setUpMap();
+        googleMap.setOnInfoWindowClickListener(this);
     }
 
     public void setUpMap() {
@@ -114,11 +121,22 @@ public class FindStudioActivity extends FragmentActivity implements OnMapReadyCa
 
         // marker loop
         for (int i = 0; i < locationList.size(); i++) {
+            String id = locationList.get(i).get(TAG_ID);
             lat = Double.parseDouble(locationList.get(i).get(TAG_LAT));
             lng = Double.parseDouble(locationList.get(i).get(TAG_LNG));
             String name = locationList.get(i).get(TAG_NAME);
-            MarkerOptions marker = new MarkerOptions().position(new LatLng(lat, lng)).title(name);
-            googleMap.addMarker(marker);
+            String type = locationList.get(i).get(TAG_TYPE);
+            Marker marker = googleMap.addMarker(new MarkerOptions().position(new LatLng(lat, lng)).title(name).snippet(type));
+            markerMap.put(marker, id);
         }
+    }
+
+    @Override
+    public void onInfoWindowClick(Marker marker){
+        String studioId = markerMap.get(marker);
+        Log.d("id", studioId);
+        Intent intent = new Intent(getApplicationContext(), DetailStudioActivity.class);
+        intent.putExtra(TAG_ID, studioId);
+        startActivity(intent);
     }
 }
