@@ -134,12 +134,11 @@ public class FindStudioActivity extends FragmentActivity implements GoogleMap.On
             markerMap.put(marker, id);
         }
     }
-
     public void onClickStudioList(View view) {
         Intent intent = new Intent(this, StudioListActivity.class);
         startActivity(intent);
     }
-}
+
     @Override
     public void onInfoWindowClick(Marker marker){
         String studioId = markerMap.get(marker);
