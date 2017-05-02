@@ -20,11 +20,20 @@
     <string name="btn_login">LOGIN</string>
     <string name="btn_register">REGISTER</string>
     <string name="full_name">Full Name</string>
-    <string name="btn_link_to_register">Not a member? Sign up now.</string>
-    <string name="btn_link_to_login">Already registered? Login now.</string>
+    <string name="btn_link_to_register">Not a member? Sign up here.</string>
+    <string name="btn_link_to_login">Already registered? Login here.</string>
     <string name="welcome">Welcome</string>
     <string name="btn_logout">LOGOUT</string>
     <string-array name="studio_type_array">
+        <item>Photography</item>
+        <item>Textiles</item>
+        <item>Sewing</item>
+        <item>Painting</item>
+        <item>Ceramics</item>
+        <item>Sculpture</item>
+    </string-array>
+    <string-array name="studio_search_array">
+        <item>All</item>
         <item>Photography</item>
         <item>Textiles</item>
         <item>Sewing</item>
