@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -26,7 +27,8 @@ import android.widget.Toast;
  * <a href="http://www.androidhive.info/2012/05/how-to-connect-android-with-php-mysql/">NewProductActivity</a>.
  */
 public class AddStudioActivity extends Activity {
-    private static String addStudioPath = "add_studio.php";
+    private static final String GEOCODE_URL = "http://maps.googleapis.com/maps/api/geocode/json";
+    private static String ADD_STUDIO_URL = "http://open-studio.herokuapp.com/add_studio.php";
     private static final String TAG_SUCCESS = "success";
     HttpRequestHandler httpRequestHandler = new HttpRequestHandler();
     EditText inputName;
@@ -97,7 +99,17 @@ public class AddStudioActivity extends Activity {
                     latitude = addresses.get(0).getLatitude();
                     longitude = addresses.get(0).getLongitude();
                 } else {
-                    return 3;
+                    Map<String, String> params = new HashMap<>();
+                    params.put("address", args[3]);
+                    JSONObject json = httpRequestHandler.makeHttpRequest(GEOCODE_URL,
+                            "GET", params);
+                    try {
+                        JSONObject coordinates = json.getJSONArray("results").getJSONObject(0).getJSONObject("geometry").getJSONObject("location");
+                        latitude = coordinates.getDouble("lat");
+                        longitude = coordinates.getDouble("lng");
+                    } catch (JSONException e) {
+                        return 2;
+                    }
                 }
             } catch (IOException e) {
                 return 2;
@@ -114,7 +126,7 @@ public class AddStudioActivity extends Activity {
             params.put("lat", String.valueOf(latitude));
             params.put("lng", String.valueOf(longitude));
 
-            JSONObject json = httpRequestHandler.makeHttpRequest(addStudioPath,
+            JSONObject json = httpRequestHandler.makeHttpRequest(ADD_STUDIO_URL,
                     "POST", params);
             Log.d("Create Response", json.toString());
 

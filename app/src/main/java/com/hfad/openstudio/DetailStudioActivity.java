@@ -27,7 +27,6 @@ import java.util.Map;
 public class DetailStudioActivity extends Activity {
     private static final String TAG = RegisterActivity.class.getSimpleName();
     private ProgressDialog pDialog;
-    private static final String STUDIO_DETAIL_PATH = "get_studio_details.php";
     private static final String STUDIO_DETAIL_URL = "http://open-studio.herokuapp.com/get_studio_details.php?id=";
     private TextView txtName;
     private TextView txtType;
@@ -39,8 +38,6 @@ public class DetailStudioActivity extends Activity {
     private TextView txtAccessibility;
     private TextView txtDescription;
 
-    private static final String TAG_SUCCESS = "success";
-    private static final String TAG_STUDIOS = "studios";
     private static final String TAG_STUDIO = "studio";
     private static final String TAG_NAME = "name";
     private static final String TAG_ID = "id";
@@ -65,7 +62,7 @@ public class DetailStudioActivity extends Activity {
         Log.d("ID", studioId);
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
-        getStudioDetails(studioId);
+        getStudioDetails(studioId.toString());
 //        new GetStudioDetails().execute();
         txtMorePhotos = (TextView) findViewById(R.id.more_photos);
         txtMorePhotos.setOnClickListener(new View.OnClickListener() {
@@ -77,7 +74,7 @@ public class DetailStudioActivity extends Activity {
         });
     }
 
-    public void getStudioDetails(final String studioId) {
+    private void getStudioDetails(final String studioId) {
         // Tag used to cancel the request
         String tag_string_req = "req_details";
 
