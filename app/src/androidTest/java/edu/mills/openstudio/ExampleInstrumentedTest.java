@@ -1,4 +1,4 @@
-package edu.hfad.openstudio;
+package edu.mills.openstudio;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
