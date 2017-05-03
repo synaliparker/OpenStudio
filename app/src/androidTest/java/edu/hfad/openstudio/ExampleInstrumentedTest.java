@@ -1,4 +1,4 @@
-package com.hfad.openstudio;
+package edu.hfad.openstudio;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

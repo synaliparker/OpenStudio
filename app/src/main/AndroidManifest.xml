@@ -13,41 +13,41 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
-        android:name=".AppController"
+        android:name="edu.mills.openstudio.AppController"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name="edu.mills.openstudio.MainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FindStudioActivity" />
-        <activity android:name=".DetailStudioActivity" />
-        <activity android:name=".AddStudioActivity" />
+        <activity android:name="edu.mills.openstudio.FindStudioActivity" />
+        <activity android:name="edu.mills.openstudio.DetailStudioActivity" />
+        <activity android:name="edu.mills.openstudio.AddStudioActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAGtFE78EI-iQ7OUbgf9pLAlu3ICB6dXz4" />
 
         <activity
-            android:name=".StudioListActivity"
+            android:name="edu.mills.openstudio.StudioListActivity"
             android:label="@string/title_activity_studio_list" />
         <activity
-            android:name=".LoginActivity"
+            android:name="edu.mills.openstudio.LoginActivity"
             android:label="@string/title_activity_login" />
         <activity
-            android:name=".RegisterActivity"
+            android:name="edu.mills.openstudio.RegisterActivity"
             android:label="@string/title_activity_register" />
         <activity
-            android:name=".UserHomeScreenActivity"
+            android:name="edu.mills.openstudio.UserHomeScreenActivity"
             android:label="@string/title_activity_user_home_screen"></activity>
-        <activity android:name=".ImageDetailActivity"></activity>
+        <activity android:name="edu.mills.openstudio.ImageDetailActivity"></activity>
     </application>
 
 </manifest>

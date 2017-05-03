@@ -1,4 +1,4 @@
-package com.hfad.openstudio;
+package edu.mills.openstudio;
 
 /**
  * Created by nadin on 5/1/2017.

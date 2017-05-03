@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".MainActivity">
+    tools:context="edu.mills.openstudio.MainActivity">
     <item android:id="@+id/add_studio"
         android:title="@string/add_studio"
         android:icon="@drawable/add_studio_icon"
         android:orderInCategory="1"
-        app:showAsAction="always"/>
+        android:showAsAction="always"/>
     <item android:id="@+id/action_settings"
         android:title="@string/action_settings"
         android:orderInCategory="100"
-        app:showAsAction="never" />
+        android:showAsAction="never" />
 </menu>
