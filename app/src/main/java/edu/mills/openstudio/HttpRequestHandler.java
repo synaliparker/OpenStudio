@@ -1,4 +1,4 @@
-package com.hfad.openstudio;
+package edu.mills.openstudio;
 
 import android.util.Log;
 

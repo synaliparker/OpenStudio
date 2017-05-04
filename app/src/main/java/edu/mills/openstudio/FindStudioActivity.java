@@ -1,4 +1,4 @@
-package com.hfad.openstudio;
+package edu.mills.openstudio;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -10,10 +10,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;

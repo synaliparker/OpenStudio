@@ -1,4 +1,4 @@
-package com.hfad.openstudio;
+package edu.mills.openstudio;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 
 public class MainActivity extends Activity {
 
@@ -30,6 +29,7 @@ public class MainActivity extends Activity {
                 Intent intent = new Intent(this, AddStudioActivity.class);
                 startActivity(intent);
                 return true;
+                // Code to run when the about item is clicked
             case R.id.action_settings:
                 //Code to run when the settings item is clicked
                 return true;
