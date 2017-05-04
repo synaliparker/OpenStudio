@@ -6,7 +6,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:background="@color/main_bg"
-    tools:context="com.hfad.openstudio.edu.hfad.openstudio.MainActivity">
+    tools:context="edu.mills.openstudio.MainActivity">
 
     <ImageView
         android:layout_width="125dp"

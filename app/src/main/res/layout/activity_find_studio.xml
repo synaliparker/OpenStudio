@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    tools:context="com.hfad.openstudio.edu.hfad.openstudio.FindStudioActivity"
+    tools:context="edu.mills.openstudio.FindStudioActivity"
     android:weightSum="1">
     <Spinner
         android:id="@+id/type_select"
