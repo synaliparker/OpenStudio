@@ -2,9 +2,12 @@ package edu.mills.openstudio;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -36,13 +39,16 @@ public class MainActivity extends AppCompatActivity {
                     public boolean onNavigationItemSelected(@NonNull MenuItem item){
                         switch (item.getItemId()){
                             case R.id.home_item:
-                                Toast.makeText(MainActivity.this, "Button clicked", Toast.LENGTH_SHORT).show();
+                                Intent homeIntent = new Intent(MainActivity.this, MainActivity.class);
+                                startActivity(homeIntent);
                                 break;
                             case R.id.search_studios_item:
-                                Toast.makeText(MainActivity.this, "Button clicked", Toast.LENGTH_SHORT).show();
+                                Intent searchIntent = new Intent(MainActivity.this, FindStudioActivity.class);
+                                startActivity(searchIntent);
                                 break;
                             case R.id.account_item:
-                                Toast.makeText(MainActivity.this, "Button clicked", Toast.LENGTH_SHORT).show();
+                                Intent accountIntent = new Intent(MainActivity.this, UserHomeScreenActivity.class);
+                                startActivity(accountIntent);
                                 break;
                         }
                         return false;
