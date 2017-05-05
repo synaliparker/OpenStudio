@@ -60,10 +60,10 @@ public class FindStudioActivity extends FragmentActivity implements GoogleMap.On
                 findViewById(R.id.bottom_navigation);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(
-                new BottomNavigationView.OnNavigationItemSelectedListener(){
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem item){
-                        switch (item.getItemId()){
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
                             case R.id.home_item:
                                 Intent homeIntent = new Intent(FindStudioActivity.this, MainActivity.class);
                                 startActivity(homeIntent);

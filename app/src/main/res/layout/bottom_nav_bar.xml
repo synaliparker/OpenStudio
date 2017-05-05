@@ -2,9 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:design="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
         <android.support.design.widget.BottomNavigationView
             android:id="@+id/bottom_navigation"
@@ -15,5 +16,4 @@
             app:itemIconTint="@color/white"
             app:itemTextColor="@color/white"
             design:menu="@menu/bottom_nav_items"/>
-
 </RelativeLayout>

@@ -58,5 +58,21 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            app:itemBackground="@color/black"
+            app:itemIconTint="@color/white"
+            app:itemTextColor="@color/white"
+            design:menu="@menu/bottom_nav_items"/>
+    </RelativeLayout>
 </LinearLayout>
 
