@@ -7,9 +7,9 @@
         android:title="@string/add_studio"
         android:icon="@drawable/add_studio_icon"
         android:orderInCategory="1"
-        android:showAsAction="always"/>
+        app:showAsAction="always"/>
     <item android:id="@+id/action_settings"
         android:title="@string/action_settings"
         android:orderInCategory="100"
-        android:showAsAction="never" />
+        app:showAsAction="never" />
 </menu>
