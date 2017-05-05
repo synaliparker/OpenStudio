@@ -27,7 +27,7 @@ import android.widget.Toast;
  */
 public class AddStudioActivity extends Activity {
     private static final String GEOCODE_URL = "http://maps.googleapis.com/maps/api/geocode/json";
-    private static String ADD_STUDIO_URL = "http://open-studio.herokuapp.com/add_studio.php";
+    private static final String ADD_STUDIO_URL = "http://open-studio.herokuapp.com/add_studio.php";
     private static final String TAG_SUCCESS = "success";
     HttpRequestHandler httpRequestHandler = new HttpRequestHandler();
     EditText inputName;
