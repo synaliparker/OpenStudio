@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,7 +23,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class DetailStudioActivity extends Activity {
+public class DetailStudioActivity extends AppCompatActivity {
     private static final String TAG = RegisterActivity.class.getSimpleName();
     private ProgressDialog pDialog;
     private static final String STUDIO_DETAIL_URL = "http://open-studio.herokuapp.com/get_studio_details.php?id=";

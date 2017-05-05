@@ -15,7 +15,6 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

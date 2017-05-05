@@ -7,12 +7,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class UserHomeScreenActivity extends Activity {
+public class UserHomeScreenActivity extends AppCompatActivity {
 
     private TextView txtName;
     private TextView txtEmail;
@@ -25,6 +26,32 @@ public class UserHomeScreenActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_home_screen);
+
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)
+                findViewById(R.id.bottom_navigation);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.home_item:
+                                Intent homeIntent = new Intent(UserHomeScreenActivity.this, MainActivity.class);
+                                startActivity(homeIntent);
+                                break;
+                            case R.id.search_studios_item:
+                                Intent searchIntent = new Intent(UserHomeScreenActivity.this, FindStudioActivity.class);
+                                startActivity(searchIntent);
+                                break;
+                            case R.id.account_item:
+                                Intent accountIntent = new Intent(UserHomeScreenActivity.this, UserHomeScreenActivity.class);
+                                startActivity(accountIntent);
+                                break;
+                        }
+                        return false;
+                    }
+
+                });
 
         txtName = (TextView) findViewById(R.id.full_name);
         txtEmail = (TextView) findViewById(R.id.email);
