@@ -54,4 +54,7 @@
     <string name="title_activity_login">Login</string>
     <string name="title_activity_register">Register</string>
     <string name="title_activity_user_home_screen">Home</string>
+    <string name="string_search_studios">Search</string>
+    <string name="string_home">Home</string>
+    <string name="string_account">Account</string>
 </resources>
