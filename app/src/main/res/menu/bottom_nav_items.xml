@@ -5,21 +5,21 @@
         android:id="@+id/home_item"
         android:enabled="true"
         android:title="@string/string_home"
-        android:icon="@mipmap/ic_home_white_24dp"
+        android:icon="@drawable/ic_home_white_24dp"
         app:showAsAction="ifRoom"
         />
     <item
         android:id="@+id/search_studios_item"
         android:enabled="true"
         android:title="@string/string_search_studios"
-        android:icon="@mipmap/ic_search_white_24dp"
+        android:icon="@drawable/ic_search_white_24dp"
         app:showAsAction="ifRoom"
         />
     <item
         android:id="@+id/account_item"
         android:enabled="true"
         android:title="@string/string_account"
-        android:icon="@mipmap/ic_account_box_white_24dp"
+        android:icon="@drawable/ic_account_box_white_24dp"
         app:showAsAction="ifRoom"
         />
 </menu>
