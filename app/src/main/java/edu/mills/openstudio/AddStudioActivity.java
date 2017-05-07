@@ -12,7 +12,11 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,7 +30,7 @@ import retrofit2.Response;
  * Adapted from Ravi Tamada's
  * <a href="http://www.androidhive.info/2012/05/how-to-connect-android-with-php-mysql/">NewProductActivity</a>.
  */
-public class AddStudioActivity extends Activity {
+public class AddStudioActivity extends AppCompatActivity {
     private static final String GEOCODE_URL = "http://maps.googleapis.com/maps/api/geocode/json";
     private EditText inputName;
     private EditText inputOwner;
