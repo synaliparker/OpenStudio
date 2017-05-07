@@ -2,36 +2,60 @@ package edu.mills.openstudio;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.content.ContextCompat;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.util.Log;
 import android.widget.Toast;
 
+//import com.google.android.gms.auth.api.signin.GoogleSignInOptionsExtension;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import android.Manifest;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+//import java.util.jar.Manifest;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class FindStudioActivity extends FragmentActivity implements GoogleMap.OnInfoWindowClickListener, OnMapReadyCallback {
+public class FindStudioActivity extends FragmentActivity implements OnMapReadyCallback,
+        GoogleMap.OnInfoWindowClickListener,
+        GoogleApiClient.ConnectionCallbacks,
+        GoogleApiClient.OnConnectionFailedListener,
+        LocationListener{
     private GoogleMap googleMap;
+    GoogleApiClient mapGoogleApiClient;
+    Location mapLastLocation;
+    Marker mapCurrentLocationMarker;
+    LocationRequest mapLocationRequest;
+
     private HashMap<Marker, String> markerMap = new HashMap<>();
     private Double lat = 0.00;
     private Double lng = 0.00;
@@ -40,6 +64,8 @@ public class FindStudioActivity extends FragmentActivity implements GoogleMap.On
     private static final String TAG_TYPE = "type";
     private static final String TAG_LAT = "lat";
     private static final String TAG_LNG = "lng";
+    public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
+
     SupportMapFragment fragment;
     ArrayList<HashMap<String,String>> locationList = new ArrayList<>();
 
@@ -47,6 +73,7 @@ public class FindStudioActivity extends FragmentActivity implements GoogleMap.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_studio);
+
         BottomNavigationView bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.bottom_navigation);
 
@@ -72,8 +99,10 @@ public class FindStudioActivity extends FragmentActivity implements GoogleMap.On
                     }
 
                 });
+
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,6 +153,9 @@ public class FindStudioActivity extends FragmentActivity implements GoogleMap.On
                     hashMap.put(TAG_LNG, Double.toString(studio.getLng()));
                     locationList.add(hashMap);
                 }
+                if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    checkLocationPermission();
+                }
                 fragment = ((SupportMapFragment)
                         getSupportFragmentManager().findFragmentById(R.id.map));
                 fragment.getMapAsync(FindStudioActivity.this);
@@ -140,17 +172,59 @@ public class FindStudioActivity extends FragmentActivity implements GoogleMap.On
     @Override
     public void onMapReady(GoogleMap map) {
         googleMap = map;
+        googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         setUpMap();
+
+        if(android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            if(ContextCompat.checkSelfPermission(this,
+                    Manifest.permission.ACCESS_FINE_LOCATION)
+                    == PackageManager.PERMISSION_GRANTED){
+                buildGoogleApiClient();
+                googleMap.setMyLocationEnabled(true);
+            }
+        }else{
+            buildGoogleApiClient();
+            googleMap.setMyLocationEnabled(true);
+        }
         googleMap.setOnInfoWindowClickListener(this);
+    }
+
+    protected synchronized void buildGoogleApiClient(){
+        mapGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(LocationServices.API)
+                .build();
+        mapGoogleApiClient.connect();
+    }
+
+    @Override
+    public void onConnected(Bundle bundle){
+        mapLocationRequest = new LocationRequest();
+        mapLocationRequest.setInterval(1000);
+        mapLocationRequest.setFastestInterval(1000);
+        mapLocationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
+            if(ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+                LocationServices.FusedLocationApi.requestLocationUpdates(mapGoogleApiClient,
+                        mapLocationRequest,this);
+            }
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
     }
 
     public void setUpMap() {
         // focus & zoom
-        lat = 37.77;
-        lng = -122.18;
-        LatLng coordinate = new LatLng(lat, lng);
-        googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(coordinate, 11));
+//        lat = 37.77;
+//        lng = -122.18;
+//        LatLng coordinate = new LatLng(lat, lng);
+//        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(coordinate, 11));
+
+
 
         // marker loop
         for (int i = 0; i < locationList.size(); i++) {
@@ -176,4 +250,111 @@ public class FindStudioActivity extends FragmentActivity implements GoogleMap.On
         intent.putExtra(TAG_ID, studioId);
         startActivity(intent);
     }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        mapLastLocation = location;
+        if (mapCurrentLocationMarker != null) {
+            mapCurrentLocationMarker.remove();
+        }
+
+        //Place current location marker
+        LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+//
+        //move map camera
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+        googleMap.animateCamera(CameraUpdateFactory.zoomTo(11));
+
+        //stop location updates
+        if (mapGoogleApiClient != null) {
+            LocationServices.FusedLocationApi.removeLocationUpdates(mapGoogleApiClient, this);
+        }
+
+    }
+
+
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+
+    public void onProviderEnabled(String provider) {
+
+    }
+
+
+    public void onProviderDisabled(String provider) {
+
+    }
+
+
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
+
+    private boolean checkLocationPermission() {
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            // Asking user if explanation is needed
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.ACCESS_FINE_LOCATION)) {
+
+                // Show an explanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+
+                //Prompt the user once explanation has been shown
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                        MY_PERMISSIONS_REQUEST_LOCATION);
+
+
+            } else {
+                // No explanation needed, we can request the permission.
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                        MY_PERMISSIONS_REQUEST_LOCATION);
+            }
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_LOCATION: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    // permission was granted. Do the
+                    // contacts-related task you need to do.
+                    if (ContextCompat.checkSelfPermission(this,
+                            Manifest.permission.ACCESS_FINE_LOCATION)
+                            == PackageManager.PERMISSION_GRANTED) {
+
+                        if (mapGoogleApiClient == null) {
+                            buildGoogleApiClient();
+                        }
+                        googleMap.setMyLocationEnabled(true);
+                    }
+
+                } else {
+
+                    // Permission denied, Disable the functionality that depends on this permission.
+                    Toast.makeText(this, "permission denied", Toast.LENGTH_LONG).show();
+                }
+                return;
+            }
+
+            // other 'case' lines to check for other permissions this app might request.
+            // You can add here other case statements according to your requirement.
+        }
+    }
+
 }

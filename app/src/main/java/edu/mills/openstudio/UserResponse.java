@@ -10,18 +10,28 @@ import java.util.List;
 
 public class UserResponse {
     @SerializedName("error")
-    private String error;
+    private Boolean error;
+    @SerializedName("error_msg")
+    private String errorMsg;
     @SerializedName("uid")
     private String uid;
     @SerializedName("user")
     private User user;
 
-    public String getError() {
+    public Boolean getError() {
         return error;
     }
 
-    public void setError(String error) {
+    public void setError(Boolean error) {
         this.error = error;
+    }
+
+    public String getErrorMsg() {
+        return errorMsg;
+    }
+
+    public void setErrorMsg(String errorMsg) {
+        this.errorMsg = errorMsg;
     }
 
     public String getUid() {
@@ -39,4 +49,5 @@ public class UserResponse {
     public void setUser(User user) {
         this.user = user;
     }
+
 }
