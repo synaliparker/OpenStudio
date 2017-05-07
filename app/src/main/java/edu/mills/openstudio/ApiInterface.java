@@ -39,11 +39,10 @@ public interface ApiInterface {
     Call<UserResponse> register(
             @Field("name") String name,
             @Field("email") String email,
-            @Field("password") String password
-            //@Body Object user)
-    );
+            @Field("password") String password);
 
     @FormUrlEncoded
     @POST("userlogin.php")
-    Call<UserResponse> login(@Body User user);
+    Call<UserResponse> login(@Field("email") String email,
+                             @Field("password") String password);
 }

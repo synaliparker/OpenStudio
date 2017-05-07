@@ -93,11 +93,9 @@ public class AddStudioActivity extends Activity {
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
         Call<StudioResponse> call = apiInterface.addStudio(name, owner, studioType,
                 address, email, availability, accessibility, description, lat.toString(), lng.toString());
-        Log.d("url", call.request().url().toString());
         call.enqueue(new Callback<StudioResponse>() {
             @Override
             public void onResponse(Call<StudioResponse> call, Response<StudioResponse> response) {
-                Log.d("response", response.body().toString());
                 if (!response.body().getError()) {
                     Toast.makeText(AddStudioActivity.this, "Studio added successfully", Toast.LENGTH_SHORT).show();
                     refreshAddForm();
