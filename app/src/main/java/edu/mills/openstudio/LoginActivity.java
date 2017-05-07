@@ -40,7 +40,7 @@ public class LoginActivity extends Activity {
                 if (!email.isEmpty() && !password.isEmpty()) {
                     login(email, password);
                 } else {
-                    Toast.makeText(getApplicationContext(), "Please complete all fields", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.complete_all_fields, Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -76,7 +76,7 @@ public class LoginActivity extends Activity {
 
             @Override
             public void onFailure(Call<UserResponse> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "Unable to login", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), R.string.unable_to_login, Toast.LENGTH_LONG).show();
             }
         });
     }
