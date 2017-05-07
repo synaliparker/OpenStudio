@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:design="http://schemas.android.com/apk/res-auto"
     android:gravity="center"
     android:orientation="vertical"
     android:background="@color/main_bg"
@@ -56,6 +57,34 @@
         android:textColor="@color/white"
         android:text="Login"
         android:onClick="onClickLogin"/>
+    <!--<RelativeLayout-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_width="match_parent">-->
+        <!--<TextView-->
+            <!--android:id="@+id/text_home"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:centerInParent="true"-->
+            <!--android:text="@string/string_home"/>-->
+        <!--<TextView-->
+            <!--android:id="@+id/text_search_studios"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:centerInParent="true"-->
+            <!--android:text="@string/string_search_studios"/>-->
+        <!--<TextView-->
+            <!--android:id="@+id/text_account"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:centerInParent="true"-->
+            <!--android:text="@string/string_account"/>-->
 
-
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="start"
+            design:menu="@menu/bottom_nav_items"/>
+    <!--</RelativeLayout>-->
 </LinearLayout>

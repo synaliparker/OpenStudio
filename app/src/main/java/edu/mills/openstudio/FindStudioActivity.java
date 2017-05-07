@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -46,6 +47,15 @@ public class FindStudioActivity extends FragmentActivity implements GoogleMap.On
         setContentView(R.layout.activity_find_studio);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Click action
+                Intent intent = new Intent(FindStudioActivity.this, AddStudioActivity.class);
+                startActivity(intent);
+            }
+        });
         loadStudios();
     }
 
