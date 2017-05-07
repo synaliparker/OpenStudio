@@ -1,9 +1,7 @@
 package edu.mills.openstudio;
 
 import android.app.ListActivity;
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -18,32 +16,29 @@ import android.widget.TextView;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class StudioListActivity extends ListActivity {
-
-    private ProgressDialog progressDialog;
-    private static String GET_STUDIOS_URL = "http://open-studio.herokuapp.com/get_all_studios.php";
-    // JSON Node names
-    private static final String TAG_SUCCESS = "success";
-    private static final String TAG_STUDIOS = "studios";
     private static final String TAG_ID = "id";
     private static final String TAG_NAME = "name";
     private static final String TAG_TYPE = "type";
-
-    HttpRequestHandler httpRequestHandler = new HttpRequestHandler();
-
-    ArrayList<HashMap<String,String>> studioList;
-
-    JSONArray studiosArray = null;
+    private ArrayList<HashMap<String,String>> studioList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_studio_list);
 
+        studioList = new ArrayList<>();
+        loadStudios();
         BottomNavigationView bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.bottom_navigation);
 
@@ -84,65 +79,37 @@ public class StudioListActivity extends ListActivity {
         });
     }
 
-    class LoadAllStudios extends AsyncTask<String,String,String> {
-
-        @Override
-        protected void onPreExecute(){
-            super.onPreExecute();
-            progressDialog = new ProgressDialog(StudioListActivity.this);
-            progressDialog.setMessage("Loading Studios. Please wait...");
-            progressDialog.setIndeterminate(false);
-            progressDialog.setCancelable(false);
-            progressDialog.show();
-        }
-
-        protected String doInBackground(String...args) {
-            Map<String, String> params = new HashMap<>();
-
-            JSONObject json = httpRequestHandler.makeHttpRequest(GET_STUDIOS_URL, "GET", params);
-            Log.d("All Studios:", json.toString());
-
-            try {
-                int success = json.getInt(TAG_SUCCESS);
-                if (success == 1) {
-                    studiosArray = json.getJSONArray(TAG_STUDIOS);
-
-                    for (int i = 0; i < studiosArray.length(); i++) {
-                        JSONObject jsonObject = studiosArray.getJSONObject(i);
-
-                        String id = jsonObject.getString(TAG_ID);
-                        String name = jsonObject.getString(TAG_NAME);
-                        String type = jsonObject.getString(TAG_TYPE);
-
-                        HashMap<String, String> hashMap = new HashMap<>();
-                        hashMap.put(TAG_ID, id);
-                        hashMap.put(TAG_NAME, name);
-                        hashMap.put(TAG_TYPE,type);
-                        studioList.add(hashMap);
-                    }
-                }else {
-                    Intent intent = new Intent(getApplicationContext(), AddStudioActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
+    private void loadStudios() {
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        Call<StudioResponse> call = apiInterface.getAllStudios();
+        call.enqueue(new Callback<StudioResponse>() {
+            @Override
+            public void onResponse(Call<StudioResponse> call, Response<StudioResponse> response) {
+                List<Studio> studios = response.body().getStudios();
+                for (Studio studio : studios) {
+                    String id = Integer.toString(studio.getId());
+                    String name = studio.getName();
+                    String type = studio.getType();
+                    HashMap<String, String> hashMap = new HashMap<>();
+                    hashMap.put(TAG_ID, id);
+                    hashMap.put(TAG_NAME, name);
+                    hashMap.put(TAG_TYPE,type);
+                    studioList.add(hashMap);
                 }
-            }catch(JSONException e){
-                e.printStackTrace();
+                ListAdapter adapter = new SimpleAdapter(
+                        StudioListActivity.this, studioList,
+                        R.layout.single_studio_list, new String[]{
+                        TAG_ID, TAG_NAME,TAG_TYPE},
+                        new int[]{R.id.id, R.id.name, R.id.type});
+                setListAdapter(adapter);
             }
-            return null;
-        }
 
-        protected void onPostExecute(String file_url){
-            progressDialog.dismiss();
-            ListAdapter adapter = new SimpleAdapter(
-                    StudioListActivity.this, studioList,
-                    R.layout.single_studio_list, new String[]{
-                    TAG_ID, TAG_NAME,TAG_TYPE},
-                    new int[]{R.id.id, R.id.name, R.id.type});
-            setListAdapter(adapter);
-        }
-
+            @Override
+            public void onFailure(Call<StudioResponse> call, Throwable t) {
+                Toast.makeText(StudioListActivity.this, "Failed to get studios", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
-
 }
 
 
