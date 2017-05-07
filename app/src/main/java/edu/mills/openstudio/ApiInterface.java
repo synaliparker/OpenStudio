@@ -14,35 +14,54 @@ import retrofit2.http.Query;
 
 
 public interface ApiInterface {
-    @GET("get_all_studios.php")
+    public static final String ALL_STUDIOS_PHP = "get_all_studios.php";
+    public static final String STUDIO_DETAILS_PHP = "get_studio_details.php";
+    public static final String ADD_STUDIO_PHP = "add_studio.php";
+    public static final String NAME = "name";
+    public static final String OWNER = "owner";
+    public static final String TYPE = "type";
+    public static final String ADDRESS = "address";
+    public static final String CONTACT_INFO = "contact info";
+    public static final String AVAILABILITY = "availability";
+    public static final String ACCESSIBILITY = "accessibility";
+    public static final String LATITUDE = "lat";
+    public static final String LONGITUDE = "lng";
+    public static final String REGISTER_PHP = "register.php";
+    public static final String PASSWORD = "password";
+    public static final String USER_LOGIN_PHP = "userlogin.php";
+    public static final String ID = "id";
+    public static final String DESCRIPTION = "description";
+    public static final String EMAIL = "email";
+
+    @GET(ALL_STUDIOS_PHP)
     Call<StudioResponse> getAllStudios();
 
-    @GET("get_studio_details.php")
-    Call<StudioResponse> getStudioDetails(@Query("id") String id);
+    @GET(STUDIO_DETAILS_PHP)
+    Call<StudioResponse> getStudioDetails(@Query(ID) String id);
 
     @FormUrlEncoded
-    @POST("add_studio.php")
+    @POST(ADD_STUDIO_PHP)
     Call<StudioResponse> addStudio(
-            @Field("name") String name,
-            @Field("owner") String owner,
-            @Field("type") String type,
-            @Field("address") String address,
-            @Field("contact_info") String contactInfo,
-            @Field("availability") String availability,
-            @Field("accessibility") String accessibility,
-            @Field("description") String description,
-            @Field("lat") String lat,
-            @Field("lng") String lng);
+            @Field(NAME) String name,
+            @Field(OWNER) String owner,
+            @Field(TYPE) String type,
+            @Field(ADDRESS) String address,
+            @Field(CONTACT_INFO) String contactInfo,
+            @Field(AVAILABILITY) String availability,
+            @Field(ACCESSIBILITY) String accessibility,
+            @Field(DESCRIPTION) String description,
+            @Field(LATITUDE) String lat,
+            @Field(LONGITUDE) String lng);
 
     @FormUrlEncoded
-    @POST("register.php")
+    @POST(REGISTER_PHP)
     Call<UserResponse> register(
-            @Field("name") String name,
-            @Field("email") String email,
-            @Field("password") String password);
+            @Field(NAME) String name,
+            @Field(EMAIL) String email,
+            @Field(PASSWORD) String password);
 
     @FormUrlEncoded
-    @POST("userlogin.php")
-    Call<UserResponse> login(@Field("email") String email,
-                             @Field("password") String password);
+    @POST(USER_LOGIN_PHP)
+    Call<UserResponse> login(@Field(EMAIL) String email,
+                             @Field(PASSWORD) String password);
 }

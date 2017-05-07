@@ -1,31 +1,39 @@
 package edu.mills.openstudio;
 
-
+import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    private TextView textHome;
+    private TextView textSearch;
+    private TextView textAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //startActivity (new Intent(MainActivity.this, BottomNavBar.class));
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.bottom_navigation);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(
-                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                new BottomNavigationView.OnNavigationItemSelectedListener(){
                     @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                        switch (item.getItemId()) {
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item){
+                        switch (item.getItemId()){
                             case R.id.home_item:
                                 Intent homeIntent = new Intent(MainActivity.this, MainActivity.class);
                                 startActivity(homeIntent);
@@ -51,18 +59,14 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.add_studio:
-                //Code to run when the Create Order item is clicked
                 Intent intent = new Intent(this, AddStudioActivity.class);
                 startActivity(intent);
                 return true;
-            // Code to run when the about item is clicked
             case R.id.action_settings:
-                //Code to run when the settings item is clicked
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

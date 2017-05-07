@@ -1,6 +1,5 @@
 package edu.mills.openstudio;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -18,8 +17,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.util.Log;
 import android.widget.Toast;
-
-//import com.google.android.gms.auth.api.signin.GoogleSignInOptionsExtension;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
@@ -29,18 +26,13 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import android.Manifest;
-
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-//import java.util.jar.Manifest;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -64,7 +56,10 @@ public class FindStudioActivity extends FragmentActivity implements OnMapReadyCa
     private static final String TAG_TYPE = "type";
     private static final String TAG_LAT = "lat";
     private static final String TAG_LNG = "lng";
-    public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
+    private static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
+    private static final int LOCATION_REFRESH = 1000;
+    private static final String GET_STUDIO_FAIL = "Failed to get studios";
+    private static final String PERMISSION_DENIED = "permission denied";
 
     SupportMapFragment fragment;
     ArrayList<HashMap<String,String>> locationList = new ArrayList<>();
@@ -163,7 +158,7 @@ public class FindStudioActivity extends FragmentActivity implements OnMapReadyCa
 
             @Override
             public void onFailure(Call<StudioResponse> call, Throwable t) {
-                Toast.makeText(FindStudioActivity.this, "Failed to get studios", Toast.LENGTH_SHORT).show();
+                Toast.makeText(FindStudioActivity.this, GET_STUDIO_FAIL, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -201,15 +196,15 @@ public class FindStudioActivity extends FragmentActivity implements OnMapReadyCa
     @Override
     public void onConnected(Bundle bundle){
         mapLocationRequest = new LocationRequest();
-        mapLocationRequest.setInterval(1000);
-        mapLocationRequest.setFastestInterval(1000);
+        mapLocationRequest.setInterval(LOCATION_REFRESH);
+        mapLocationRequest.setFastestInterval(LOCATION_REFRESH);
         mapLocationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
-            if(ContextCompat.checkSelfPermission(this,
+        if(ContextCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
-                LocationServices.FusedLocationApi.requestLocationUpdates(mapGoogleApiClient,
-                        mapLocationRequest,this);
-            }
+            LocationServices.FusedLocationApi.requestLocationUpdates(mapGoogleApiClient,
+                    mapLocationRequest,this);
+        }
     }
 
     @Override
@@ -218,14 +213,6 @@ public class FindStudioActivity extends FragmentActivity implements OnMapReadyCa
     }
 
     public void setUpMap() {
-        // focus & zoom
-//        lat = 37.77;
-//        lng = -122.18;
-//        LatLng coordinate = new LatLng(lat, lng);
-//        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(coordinate, 11));
-
-
-
         // marker loop
         for (int i = 0; i < locationList.size(); i++) {
             String id = locationList.get(i).get(TAG_ID);
@@ -245,7 +232,7 @@ public class FindStudioActivity extends FragmentActivity implements OnMapReadyCa
     @Override
     public void onInfoWindowClick(Marker marker){
         String studioId = markerMap.get(marker);
-        Log.d("id", studioId);
+        Log.d(TAG_ID, studioId);
         Intent intent = new Intent(getApplicationContext(), DetailStudioActivity.class);
         intent.putExtra(TAG_ID, studioId);
         startActivity(intent);
@@ -260,7 +247,7 @@ public class FindStudioActivity extends FragmentActivity implements OnMapReadyCa
 
         //Place current location marker
         LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-//
+
         //move map camera
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         googleMap.animateCamera(CameraUpdateFactory.zoomTo(11));
@@ -271,22 +258,6 @@ public class FindStudioActivity extends FragmentActivity implements OnMapReadyCa
         }
 
     }
-
-
-    public void onStatusChanged(String provider, int status, Bundle extras) {
-
-    }
-
-
-    public void onProviderEnabled(String provider) {
-
-    }
-
-
-    public void onProviderDisabled(String provider) {
-
-    }
-
 
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
@@ -347,11 +318,10 @@ public class FindStudioActivity extends FragmentActivity implements OnMapReadyCa
                 } else {
 
                     // Permission denied, Disable the functionality that depends on this permission.
-                    Toast.makeText(this, "permission denied", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, PERMISSION_DENIED, Toast.LENGTH_LONG).show();
                 }
                 return;
             }
-
             // other 'case' lines to check for other permissions this app might request.
             // You can add here other case statements according to your requirement.
         }
