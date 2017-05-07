@@ -47,6 +47,31 @@ public class FindStudioActivity extends FragmentActivity implements GoogleMap.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_studio);
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)
+                findViewById(R.id.bottom_navigation);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.home_item:
+                                Intent homeIntent = new Intent(FindStudioActivity.this, MainActivity.class);
+                                startActivity(homeIntent);
+                                break;
+                            case R.id.search_studios_item:
+                                Intent searchIntent = new Intent(FindStudioActivity.this, FindStudioActivity.class);
+                                startActivity(searchIntent);
+                                break;
+                            case R.id.account_item:
+                                Intent accountIntent = new Intent(FindStudioActivity.this, UserHomeScreenActivity.class);
+                                startActivity(accountIntent);
+                                break;
+                        }
+                        return false;
+                    }
+
+                });
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);

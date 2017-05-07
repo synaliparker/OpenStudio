@@ -5,17 +5,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -26,22 +24,20 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class StudioListActivity extends ListActivity {
+public class StudioListActivity extends AppCompatActivity {
     private static final String TAG_ID = "id";
     private static final String TAG_NAME = "name";
     private static final String TAG_TYPE = "type";
-    private ArrayList<HashMap<String,String>> studioList;
+    public ListView listView;
+    private ArrayList<HashMap<String,String>> studioList = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_studio_list);
 
-        studioList = new ArrayList<>();
-        loadStudios();
         BottomNavigationView bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.bottom_navigation);
-
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
@@ -64,19 +60,7 @@ public class StudioListActivity extends ListActivity {
                     }
 
                 });
-
-        studioList = new ArrayList<HashMap<String, String>>();
-        new LoadAllStudios().execute();
-        ListView lv = getListView();
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String studioId = ((TextView) view.findViewById(R.id.id)).getText().toString();
-                Intent intent = new Intent(getApplicationContext(), DetailStudioActivity.class);
-                intent.putExtra(TAG_ID, studioId);
-                startActivity(intent);
-            }
-        });
+        loadStudios();
     }
 
     private void loadStudios() {
@@ -96,12 +80,22 @@ public class StudioListActivity extends ListActivity {
                     hashMap.put(TAG_TYPE,type);
                     studioList.add(hashMap);
                 }
+                listView = (ListView) findViewById(android.R.id.list);
                 ListAdapter adapter = new SimpleAdapter(
                         StudioListActivity.this, studioList,
                         R.layout.single_studio_list, new String[]{
                         TAG_ID, TAG_NAME,TAG_TYPE},
                         new int[]{R.id.id, R.id.name, R.id.type});
-                setListAdapter(adapter);
+                listView.setAdapter(adapter);
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        String studioId = ((TextView) view.findViewById(R.id.id)).getText().toString();
+                        Intent intent = new Intent(getApplicationContext(), DetailStudioActivity.class);
+                        intent.putExtra(TAG_ID, studioId);
+                        startActivity(intent);
+                    }
+                });
             }
 
             @Override
@@ -110,6 +104,21 @@ public class StudioListActivity extends ListActivity {
             }
         });
     }
+
+    public void onClickHome(View view){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+    public void onClickFindStudio(View view){
+        Intent intent = new Intent(this, FindStudioActivity.class);
+        startActivity(intent);
+    }
+    public void onClickAccount(View view){
+        Intent intent = new Intent(this, UserHomeScreenActivity.class);
+        startActivity(intent);
+    }
+
+
 }
 
 
