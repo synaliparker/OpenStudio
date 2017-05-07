@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -13,7 +13,7 @@
             android:layout_margin="5dip"
             android:layout_marginBottom="15dip"
             android:hint="@string/studio_name"/>
-            <!--android:inputType="text"/>-->
+        <!--android:inputType="text"/>-->
         <EditText android:id="@+id/owner"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -78,11 +78,11 @@
             android:gravity="top"
             android:hint="@string/description"/>
         <Button android:id="@+id/add_studio"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/btn_logut_bg"
             android:textColor="@color/white"
             android:text="@string/add_studio"/>
     </LinearLayout>
-
 </ScrollView>
+
