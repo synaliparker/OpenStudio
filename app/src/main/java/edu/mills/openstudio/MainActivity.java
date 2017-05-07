@@ -1,19 +1,14 @@
 package edu.mills.openstudio;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,10 +20,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-//        textHome = (TextView) findViewById(R.id.text_home);
-//        textSearch = (TextView) findViewById(R.id.text_search_studios);
-//        textAccount = (TextView) findViewById(R.id.text_account);
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.bottom_navigation);
@@ -67,13 +58,10 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.add_studio:
-                //Code to run when the Create Order item is clicked
                 Intent intent = new Intent(this, AddStudioActivity.class);
                 startActivity(intent);
                 return true;
-            // Code to run when the about item is clicked
             case R.id.action_settings:
-                //Code to run when the settings item is clicked
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

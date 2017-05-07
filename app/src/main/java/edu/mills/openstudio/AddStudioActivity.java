@@ -4,10 +4,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.location.Address;
@@ -20,7 +18,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -48,6 +45,15 @@ public class AddStudioActivity extends Activity {
     String accessibility;
     String description;
     HttpRequestHandler httpRequestHandler = new HttpRequestHandler();
+    private static final String REQUIRED_FIELD = "Field is required";
+    private static final String LATITUDE = "lat";
+    private static final String LONGITUDE = "lng";
+    private static final String GET = "GET";
+    private static final String RESULTS = "results";
+    private static final String GEOMETRY = "geometry";
+    private static final String ADDRESS = "address";
+    private static final String LOCATION = "location";
+    private static final String ON_POST_EXECUTE = "onPostExecute";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -71,7 +77,7 @@ public class AddStudioActivity extends Activity {
                 EditText[] inputs = {inputName, inputOwner, inputAddress, inputEmail, inputAvailability, inputDescription};
                 for (EditText input : inputs) {
                     if (input.getText().toString().length() == 0) {
-                        input.setError("Field is required");
+                        input.setError(REQUIRED_FIELD);
                         addStudioButton.setClickable(true);
                         return;
                     }
@@ -97,7 +103,7 @@ public class AddStudioActivity extends Activity {
             @Override
             public void onResponse(Call<StudioResponse> call, Response<StudioResponse> response) {
                 if (!response.body().getError()) {
-                    Toast.makeText(AddStudioActivity.this, "Studio added successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddStudioActivity.this, R.string.add_studio_success, Toast.LENGTH_SHORT).show();
                     refreshAddForm();
                 } else {
                     Toast.makeText(AddStudioActivity.this, response.body().getErrorMsg(), Toast.LENGTH_LONG).show();
@@ -107,7 +113,7 @@ public class AddStudioActivity extends Activity {
 
             @Override
             public void onFailure(Call<StudioResponse> call, Throwable t) {
-                Toast.makeText(AddStudioActivity.this, "Failed to add new studio", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddStudioActivity.this, R.string.add_studio_fail, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -126,18 +132,18 @@ public class AddStudioActivity extends Activity {
                 List<Address> addresses;
                 addresses = geocoder.getFromLocationName(args[0], 1);
                 if (addresses.size() > 0) {
-                    coordinates.put("lat", addresses.get(0).getLatitude());
-                    coordinates.put("lng", addresses.get(0).getLongitude());
+                    coordinates.put(LATITUDE, addresses.get(0).getLatitude());
+                    coordinates.put(LONGITUDE, addresses.get(0).getLongitude());
                     return coordinates;
                 } else {
                     Map<String, String> params = new HashMap<>();
-                    params.put("address", args[0]);
+                    params.put(ADDRESS, args[0]);
                     JSONObject json = httpRequestHandler.makeHttpRequest(GEOCODE_URL,
-                            "GET", params);
+                            GET, params);
                     try {
-                        JSONObject results = json.getJSONArray("results").getJSONObject(0).getJSONObject("geometry").getJSONObject("location");
-                        coordinates.put("lat", results.getDouble("lat"));
-                        coordinates.put("lng", results.getDouble("lng"));
+                        JSONObject results = json.getJSONArray(RESULTS).getJSONObject(0).getJSONObject(GEOMETRY).getJSONObject(LOCATION);
+                        coordinates.put(LATITUDE, results.getDouble(LATITUDE));
+                        coordinates.put(LONGITUDE, results.getDouble(LONGITUDE));
                         return coordinates;
                     } catch (JSONException e) {
                         return null;
@@ -151,33 +157,12 @@ public class AddStudioActivity extends Activity {
         @Override
         protected void onPostExecute(HashMap<String, Double> coordinates) {
             if (coordinates.isEmpty()) {
-                Toast.makeText(AddStudioActivity.this, "Failed to convert address to coordinates", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddStudioActivity.this, R.string.convert_studio_fail, Toast.LENGTH_SHORT).show();
                 refreshAddForm();
             } else {
-                Log.d("onPostExecute", coordinates.toString());
-                postStudio(coordinates.get("lat"), coordinates.get("lng"));
+                Log.d(ON_POST_EXECUTE, coordinates.toString());
+                postStudio(coordinates.get(LATITUDE), coordinates.get(LONGITUDE));
             }
-//            if (status == 0) {
-//                Toast toast = Toast.makeText(AddStudioActivity.this, "Failed to add studio", Toast.LENGTH_SHORT);
-//                toast.show();
-//                refreshAddForm();
-//            } else if (status == 1) {
-//                Toast toast = Toast.makeText(AddStudioActivity.this, "Studio added successfully", Toast.LENGTH_SHORT);
-//                toast.show();
-//                refreshAddForm();
-//            } else if (status == 2) {
-//                Toast toast = Toast.makeText(AddStudioActivity.this, "Failed to convert address to coordinates", Toast.LENGTH_SHORT);
-//                toast.show();
-//                refreshAddForm();
-//            } else if (status == 3) {
-//                Toast toast = Toast.makeText(AddStudioActivity.this, "Invalid address", Toast.LENGTH_SHORT);
-//                toast.show();
-//                refreshAddForm();
-//            } else {
-//                Toast toast = Toast.makeText(AddStudioActivity.this, "JSON error", Toast.LENGTH_SHORT);
-//                toast.show();
-//                refreshAddForm();
-//            }
         }
     }
     void refreshAddForm() {
