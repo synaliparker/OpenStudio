@@ -10,19 +10,22 @@ public class User {
     private String name;
     @SerializedName("email")
     private String email;
-    @SerializedName("password")
-    private String password;
+//    @SerializedName("password")
+//    private String password;
+    @SerializedName("created_at")
+    private String createdAt;
 
-    public User(String name, String email) {
+    public User(String name, String email, String createdAt) {
         this.name = name;
         this.email = email;
+        this.createdAt = createdAt;
     }
 
-    public User(String name, String email, String password) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-    }
+//    public User(String name, String email, String password) {
+//        this.name = name;
+//        this.email = email;
+//        this.password = password;
+//    }
 
     public String getName() {
         return name;
@@ -40,9 +43,13 @@ public class User {
         this.email =  email;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public String getCreatedAt() {
+        return createdAt;
     }
+
+//    public void setPassword(String password) {
+//        this.password = password;
+//    }
 }
 
 
