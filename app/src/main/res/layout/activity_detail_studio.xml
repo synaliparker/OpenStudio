@@ -2,7 +2,6 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     android:orientation="horizontal">
         <LinearLayout
             android:layout_width="match_parent"
@@ -75,7 +74,8 @@
                 android:paddingRight="10dip"
                 android:paddingTop="20dip"
                 android:text="Studio Details"
-                android:textSize="17dip"/>
+                android:textSize="17dip"
+                android:textColor="@color/white"/>
             <TextView
                 android:id="@+id/studio_address"
                 android:layout_width="wrap_content"
@@ -83,7 +83,8 @@
                 android:paddingLeft="10dip"
                 android:paddingRight="10dip"
                 android:paddingTop="10dip"
-                android:textSize="17dip"/>
+                android:textSize="17dip"
+                android:textColor="@color/white"/>
             <TextView
                 android:id="@+id/studio_contact"
                 android:layout_width="wrap_content"
@@ -91,7 +92,8 @@
                 android:paddingLeft="10dip"
                 android:paddingRight="10dip"
                 android:paddingTop="10dip"
-                android:textSize="17dip"/>
+                android:textSize="17dip"
+                android:textColor="@color/white"/>
             <TextView
                 android:id="@+id/studio_availability"
                 android:layout_width="wrap_content"
@@ -99,7 +101,8 @@
                 android:paddingLeft="10dip"
                 android:paddingRight="10dip"
                 android:paddingTop="10dip"
-                android:textSize="17dip"/>
+                android:textSize="17dip"
+                android:textColor="@color/white"/>
             <TextView
                 android:id="@+id/studio_accessibility"
                 android:layout_width="wrap_content"
@@ -107,7 +110,8 @@
                 android:paddingLeft="10dip"
                 android:paddingRight="10dip"
                 android:paddingTop="10dip"
-                android:textSize="17dip"/>
+                android:textSize="17dip"
+                android:textColor="@color/white"/>
             <TextView
                 android:id="@+id/studio_description"
                 android:layout_width="wrap_content"
@@ -116,6 +120,7 @@
                 android:paddingRight="10dip"
                 android:paddingTop="10dip"
                 android:paddingBottom="20dip"
-                android:textSize="17dip"/>
+                android:textSize="17dip"
+                android:textColor="@color/white"/>
         </LinearLayout>
     </ScrollView>
