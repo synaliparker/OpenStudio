@@ -10,7 +10,9 @@ import java.util.List;
 
 public class StudioResponse {
     @SerializedName("error")
-    private String error;
+    private Boolean error;
+    @SerializedName("error_msg")
+    private String errorMsg;
     @SerializedName("studios")
     private List<Studio> studios;
 
@@ -22,11 +24,19 @@ public class StudioResponse {
         this.studios = studios;
     }
 
-    public String getError() {
+    public Boolean getError() {
         return error;
     }
 
-    public void setError(String error) {
+    public void setError(Boolean error) {
         this.error = error;
+    }
+
+    public String getErrorMsg() {
+        return errorMsg;
+    }
+
+    public void setErrorMsg(String errorMsg) {
+        this.errorMsg = errorMsg;
     }
 }

@@ -29,6 +29,20 @@ public class Studio {
     @SerializedName("lng")
     private Double lng;
 
+    public Studio(String name, String owner, String type, String address, String contactInfo,
+                  String availability, String accessibility, String description, Double lat, Double lng) {
+        this.name = name;
+        this.type = type;
+        this.owner = owner;
+        this.address = address;
+        this.contactInfo = contactInfo;
+        this.availability = availability;
+        this.accessibility = accessibility;
+        this.description = description;
+        this.lat = lat;
+        this.lng = lng;
+    }
+
     public Studio(int id, String name, String owner, String type, String address, String contactInfo,
            String availability, String accessibility, String description, Double lat, Double lng) {
         this.id = id;
