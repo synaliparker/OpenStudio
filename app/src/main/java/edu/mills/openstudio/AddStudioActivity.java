@@ -27,8 +27,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
- * Adapted from Ravi Tamada's
- * <a href="http://www.androidhive.info/2012/05/how-to-connect-android-with-php-mysql/">NewProductActivity</a>.
+ * Form for users to add new studios.
  */
 public class AddStudioActivity extends AppCompatActivity {
     private static final String GEOCODE_URL = "http://maps.googleapis.com/maps/api/geocode/json";

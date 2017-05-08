@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 
 /**
- * Created by Evetallula on 5/4/2017.
+ * About page introducing OpenStudio.
  */
 
 public class AboutActivity extends Activity {

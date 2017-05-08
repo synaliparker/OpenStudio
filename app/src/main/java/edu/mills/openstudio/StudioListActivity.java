@@ -20,11 +20,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * Show studios in listview.
+ */
 public class StudioListActivity extends AppCompatActivity {
     private static final String TAG_ID = "id";
     private static final String TAG_NAME = "name";
     private static final String TAG_TYPE = "type";
-    public ListView listView;
+    private ListView listView;
     private ArrayList<HashMap<String,String>> studioList = new ArrayList<>();
 
     @Override

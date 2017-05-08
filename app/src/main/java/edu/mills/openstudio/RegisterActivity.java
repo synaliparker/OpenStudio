@@ -11,6 +11,9 @@ import android.widget.Toast;
 import retrofit2.Call;
 import retrofit2.Callback;
 
+/**
+ * User registration page.
+ */
 public class RegisterActivity extends Activity {
     private Button btnRegister;
     private Button btnLinkToLogin;

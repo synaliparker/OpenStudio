@@ -40,11 +40,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dip"
             android:background="@color/btn_logut_bg"
-            android:text="@string/find_studio_test_button"
+            android:text="@string/main_page_button"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="15dp"
-            android:onClick="onClickNavFindStudio"/>
+            android:onClick="onClickNavMainActivity"/>
         <Button
             android:id="@+id/btnLogout"
             android:layout_width="fill_parent"
@@ -59,8 +59,7 @@
     <RelativeLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
         <android.support.design.widget.BottomNavigationView
             android:id="@+id/bottom_navigation"
