@@ -3,7 +3,7 @@
     <string name="title_activity_studio_list">Studio List</string>
     <string name="title_activity_login">Login</string>
     <string name="title_activity_register">Register</string>
-    <string name="title_activity_user_home_screen">Home</string>
+    <string name="title_activity_user_home_screen">Account</string>
     <string name="app_name">OpenStudio</string>
 
     <!--AddStudioActivity strings-->
@@ -12,11 +12,11 @@
     <string name="convert_studio_fail">Failed to convert address to coordinates</string>
 
     <!--FindStudioActivity strings-->
-    <string name="on_connection_failed">Unable to connect to GoogleMap.</string>
-    <string name="on_connection_suspended">Connection to GoogleMap stopped.</string>
+    <string name="on_connection_failed">Unable to connect to Google Maps</string>
+    <string name="on_connection_suspended">Connection to Google Maps stopped</string>
 
     <!--LoginActivity strings-->
-    <string name="complete_all_fields">Please complete all field"</string>
+    <string name="complete_all_fields">Please complete all fields</string>
     <string name="unable_to_login">Unable to login</string>
 
     <!--RegisterActivity strings-->
