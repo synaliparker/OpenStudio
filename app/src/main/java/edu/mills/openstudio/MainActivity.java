@@ -55,12 +55,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.add_studio:
-                //Code to run when the Create Order item is clicked
-                Intent intent = new Intent(this, AddStudioActivity.class);
-                startActivity(intent);
+            case R.id.about:
+                //Code to run when the about item is clicked
+                Intent aboutIntent = new Intent(this, AboutActivity.class);
+                startActivity(aboutIntent);
                 return true;
-            // Code to run when the about item is clicked
+            case R.id.logout:
+                // TODO: Add code to run when the logout item is clicked
+                return true;
             case R.id.action_settings:
                 //Code to run when the settings item is clicked
                 return true;

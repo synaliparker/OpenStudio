@@ -57,6 +57,23 @@
     <string name="string_search_studios">Search</string>
     <string name="string_home">Home</string>
     <string name="string_account">Account</string>
+    <string name="about">About</string>
+    <string name="logout">Log Out</string>
+
+    <string name="about_paragraph">
+        Welcome to OpenStudio!
+        \n\n
+        This app allows you to search for art studios in your area!
+        Our goal is accessibility for everyone, so we give you the option of
+        viewing photos and features of a space.
+        \n\n
+        In the future you will be able to search for workspaces at accessible prices,
+        and also buy, sell, and trade art supplies for a low cost.
+        \n\n
+        For any questions or concerns, contact
+        \n
+        Nadine, Syn, Regina, and Eve!
+    </string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
