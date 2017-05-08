@@ -33,7 +33,6 @@
     <string name="find_studio_test_button">Find Studios</string>
     <string name="main_activity_button">Home</string>
 
-    <string name="owner_name">Owner Name</string>
     <string name="type">Studio Type</string>
     <string name="address">Address</string>
     <string name="owner_name">Owner Name</string>
@@ -43,7 +42,6 @@
     <string name="studio_details">Studio Details</string>
 
     <!--activity_main.xml strings-->
-    <string name="find_studio_test_button">Find Studios</string>
     <string name="find_workshops">Find Workshops</string>
     <string name="tools">Tools</string>
 
@@ -65,10 +63,7 @@
     <string name="btn_link_to_login">Already registered? Login here.</string>
 
     <!--activity_user_home_screen.xml strings-->
-    <string name="welcome">Welcome</string>
     <string name="full_name">Full Name</string>
-    <string name="btn_link_to_register">Not a user? Sign up here.</string>
-    <string name="btn_link_to_login">Already registered? Login here.</string>
     <string name="welcome">Welcome to OpenStudio</string>
     <string name="btn_logout">LOGOUT</string>
 
