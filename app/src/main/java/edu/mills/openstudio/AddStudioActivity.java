@@ -16,7 +16,6 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -98,28 +97,6 @@ public class AddStudioActivity extends AppCompatActivity {
                 new ConvertLocationTask().execute(address);
             }
         });
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.about:
-                //Code to run when the about item is clicked
-                Intent aboutIntent = new Intent(this, AboutActivity.class);
-                startActivity(aboutIntent);
-                return true;
-            case R.id.action_settings:
-                //Code to run when the settings item is clicked
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 
     private void postStudio(Double lat, Double lng) {
