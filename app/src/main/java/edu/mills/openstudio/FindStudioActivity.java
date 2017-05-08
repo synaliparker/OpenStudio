@@ -69,14 +69,28 @@ public class FindStudioActivity extends FragmentActivity implements OnMapReadyCa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_studio);
 
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Click action
+                Intent intent = new Intent(FindStudioActivity.this, AddStudioActivity.class);
+                startActivity(intent);
+            }
+        });
+        loadStudios();
+
         BottomNavigationView bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.bottom_navigation);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(
-                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                new BottomNavigationView.OnNavigationItemSelectedListener(){
                     @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                        switch (item.getItemId()) {
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item){
+                        switch (item.getItemId()){
                             case R.id.home_item:
                                 Intent homeIntent = new Intent(FindStudioActivity.this, MainActivity.class);
                                 startActivity(homeIntent);
@@ -94,20 +108,6 @@ public class FindStudioActivity extends FragmentActivity implements OnMapReadyCa
                     }
 
                 });
-
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Click action
-                Intent intent = new Intent(FindStudioActivity.this, AddStudioActivity.class);
-                startActivity(intent);
-            }
-        });
-        loadStudios();
     }
 
     @Override
@@ -119,10 +119,10 @@ public class FindStudioActivity extends FragmentActivity implements OnMapReadyCa
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.add_studio:
-                //Code to run when the Create Order item is clicked
-                Intent intent = new Intent(this, AddStudioActivity.class);
-                startActivity(intent);
+            case R.id.about:
+                //Code to run when the about item is clicked
+                Intent aboutIntent = new Intent(this, AboutActivity.class);
+                startActivity(aboutIntent);
                 return true;
             case R.id.action_settings:
                 //Code to run when the settings item is clicked
