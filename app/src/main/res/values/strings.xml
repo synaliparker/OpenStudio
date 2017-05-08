@@ -30,13 +30,41 @@
     <string name="add_studio">Add Studio</string>
     <string name="studio_text">Search studios</string>
     <string name="location_text">Search location</string>
-    <string name="find_studio_test_button">Find Studios</string>
     <string name="main_activity_button">Home</string>
-
     <string name="owner_name">Owner Name</string>
     <string name="type">Studio Type</string>
     <string name="address">Address</string>
-    <string name="owner_name">Owner Name</string>
+    <string name="accessibility">Accessibility</string>
+    <string name="description">Description</string>
+    <string name="availability">Days and Times Available</string>
+    <string name="contact_info">Email Address</string>
+
+    <string-array name="studio_type_array">
+        <item>Photography</item>
+        <item>Textiles</item>
+        <item>Sewing</item>
+        <item>Painting</item>
+        <item>Ceramics</item>
+        <item>Sculpture</item>
+    </string-array>
+
+    <string-array name="accessibility_array">
+        <item>Wheelchair accessible</item>
+        <item>Low scent</item>
+        <item>Gender neutral restrooms</item>
+        <item>ASL interpreter</item>
+        <item>N/A</item>
+    </string-array>
+
+    <string-array name="studio_search_array">
+        <item>All</item>
+        <item>Photography</item>
+        <item>Textiles</item>
+        <item>Sewing</item>
+        <item>Painting</item>
+        <item>Ceramics</item>
+        <item>Sculpture</item>
+    </string-array>
 
     <!--activity_detail_studio_strings-->
     <string name="more_photos">View more photos</string>
@@ -61,11 +89,7 @@
     <string name="btn_login">LOGIN</string>
     <string name="btn_register">REGISTER</string>
 
-    <string name="btn_link_to_register">Not a member? Sign up here.</string>
-    <string name="btn_link_to_login">Already registered? Login here.</string>
-
     <!--activity_user_home_screen.xml strings-->
-    <string name="welcome">Welcome</string>
     <string name="full_name">Full Name</string>
     <string name="btn_link_to_register">Not a user? Sign up here.</string>
     <string name="btn_link_to_login">Already registered? Login here.</string>
