@@ -11,6 +11,9 @@ import android.widget.Toast;
 import retrofit2.Call;
 import retrofit2.Callback;
 
+/**
+ * User login page.
+ */
 public class LoginActivity extends Activity {
     private EditText inputEmail;
     private EditText inputPassword;

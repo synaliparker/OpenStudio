@@ -11,6 +11,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+/**
+ * User home screen.
+ * Users are able to navigate to the main screen and to logout.
+ */
 public class UserHomeScreenActivity extends AppCompatActivity {
 
     private TextView txtName;
@@ -86,8 +90,8 @@ public class UserHomeScreenActivity extends AppCompatActivity {
     }
 
     /**
-     * Logging out the user. Will set isLoggedIn flag to false in shared
-     * preferences Clears the user data from sqlite users table
+     * User logout, which will set isLoggIn as false and clear user data from
+     * SQLite users table.
      * */
     private void logoutUser() {
         session.setLogin(false);
@@ -97,8 +101,13 @@ public class UserHomeScreenActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-    public void onClickNavFindStudio(View view){
-        Intent intent = new Intent(this, FindStudioActivity.class);
+
+    /**
+     * Navigate users to MainActivity.
+     * @param view MainActivity page
+     */
+    public void onClickNavMainActivity(View view){
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }

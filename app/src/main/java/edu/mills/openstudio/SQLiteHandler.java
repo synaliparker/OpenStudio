@@ -8,6 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import java.util.HashMap;
 
+/**
+ * Handles the creation and opening of user authentication information.
+ */
 public class SQLiteHandler extends SQLiteOpenHelper {
 
     private static final String TAG = SQLiteHandler.class.getSimpleName();
@@ -20,11 +23,15 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     private static final String KEY_UID = "uid";
     private static final String KEY_CREATED_AT = "created_at";
 
+    /**
+     * Contructer for the class.
+     * @param context used to
+     */
     public SQLiteHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    // Creating Tables
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_LOGIN_TABLE = "CREATE TABLE " + TABLE_USER + "("
@@ -36,7 +43,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         Log.d(TAG, "Database tables created");
     }
 
-    // Upgrading database
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Drop older table if existed

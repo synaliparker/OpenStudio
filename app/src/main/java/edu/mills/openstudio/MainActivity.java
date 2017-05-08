@@ -10,6 +10,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+/**
+ * Page where users can choose to navigate to studios, workshops and tools.
+ */
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -70,6 +73,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Launch FindStudioActivity on button click.
+     * @param view The page view for FindListActiivty
+     */
     public void onClickFindStudio(View view) {
         Intent intent = new Intent(this, FindStudioActivity.class);
         startActivity(intent);

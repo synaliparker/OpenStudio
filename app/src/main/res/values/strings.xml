@@ -28,10 +28,12 @@
     <!--activity_add_studio.xml strings-->
     <string name="studio_name">Studio Name</string>
     <string name="add_studio">Add Studio</string>
-    <string name="description">Description</string>
-    <string name="accessibility">Accessibility</string>
-    <string name="availability">Days and Times Available</string>
-    <string name="contact_info">Email Address</string>
+    <string name="studio_text">Search studios</string>
+    <string name="location_text">Search location</string>
+    <string name="find_studio_test_button">Find Studios</string>
+    <string name="main_activity_button">Home</string>
+
+    <string name="owner_name">Owner Name</string>
     <string name="type">Studio Type</string>
     <string name="address">Address</string>
     <string name="owner_name">Owner Name</string>

@@ -15,6 +15,9 @@ import android.widget.Toast;
 import retrofit2.Call;
 import retrofit2.Callback;
 
+/**
+ * Shows the details of selected studio.
+ */
 public class DetailStudioActivity extends Activity {
     private TextView txtName;
     private TextView txtType;

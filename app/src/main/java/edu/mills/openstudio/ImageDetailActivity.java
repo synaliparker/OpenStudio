@@ -11,6 +11,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+/**
+ * Class to hold studio images.
+ */
 public class ImageDetailActivity extends Activity {
     ViewPager mViewPager;
     int[] mResources = {
