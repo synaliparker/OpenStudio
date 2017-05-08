@@ -75,8 +75,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/description_field_margin"
             android:layout_marginBottom="@dimen/description_field_bottom_margin"
-            android:minLines="@dimen/description_min_lines"
-            android:maxLines="@dimen/description_max_lines"
+            android:minLines="4"
+            android:maxLines="4"
             android:isScrollContainer="true"
             android:gravity="top"
             android:hint="@string/description"/>

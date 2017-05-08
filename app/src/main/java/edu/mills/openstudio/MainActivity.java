@@ -68,14 +68,4 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, FindStudioActivity.class);
         startActivity(intent);
     }
-
-    public void onClickAddStudio(View view){
-        Intent intent = new Intent(this, AddStudioActivity.class);
-        startActivity(intent);
-    }
-
-    public void onClickLogin(View view) {
-        Intent intent = new Intent(this,LoginActivity.class);
-        startActivity(intent);
-    }
 }

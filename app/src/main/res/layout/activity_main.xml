@@ -23,7 +23,7 @@
         android:paddingBottom="15dip"/>
 
     <Button
-        android:id="@+id/nav_to_map"
+        android:id="@+id/find_studios"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dip"
@@ -35,7 +35,7 @@
         android:onClick="onClickFindStudio" />
 
     <Button
-        android:id="@+id/add_studio"
+        android:id="@+id/find_workshops"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dip"
@@ -43,11 +43,10 @@
         android:paddingRight="10dip"
         android:background="@color/main_btn"
         android:textColor="@color/white"
-        android:text="Add Studio"
-        android:onClick="onClickAddStudio"/>
+        android:text="Find Workshops" />
 
     <Button
-        android:id="@+id/login"
+        android:id="@+id/tools"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dip"
@@ -56,8 +55,7 @@
         android:orientation="vertical"
         android:background="@color/main_btn"
         android:textColor="@color/white"
-        android:text="Login"
-        android:onClick="onClickLogin"/>
+        android:text="Tools" />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
