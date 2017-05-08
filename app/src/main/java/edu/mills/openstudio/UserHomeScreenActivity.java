@@ -14,13 +14,11 @@ import android.widget.TextView;
 
 /**
  * User home screen.
- * Users are able to navigate to the main screen and to logout.
+ * Users are able to navigate to the main screen and logout.
  */
 public class UserHomeScreenActivity extends AppCompatActivity {
-
-    private TextView txtName;
-    private TextView txtEmail;
-    private Button btnLogout;
+    private static final String NAME = "name";
+    private static final String EMAIL = "email";
     private SQLiteHandler db;
     private SessionManager session;
 
@@ -55,32 +53,26 @@ public class UserHomeScreenActivity extends AppCompatActivity {
 
                 });
 
-        txtName = (TextView) findViewById(R.id.full_name);
-        txtEmail = (TextView) findViewById(R.id.email);
-        btnLogout = (Button) findViewById(R.id.btnLogout);
+        TextView txtName = (TextView) findViewById(R.id.full_name);
+        TextView txtEmail = (TextView) findViewById(R.id.email);
+        Button btnLogout = (Button) findViewById(R.id.btnLogout);
 
-        // SqLite database handler
         db = new SQLiteHandler(getApplicationContext());
 
-        // session manager
         session = new SessionManager(getApplicationContext());
 
         if (!session.isLoggedIn()) {
             logoutUser();
         }
 
-        // Fetching user details from sqlite
         HashMap<String, String> user = db.getUserDetails();
 
-        String name = user.get("name");
-        String email = user.get("email");
-
-        // Displaying the user details on the screen
+        String name = user.get(NAME);
+        String email = user.get(EMAIL);
 
         txtName.setText(name);
         txtEmail.setText(email);
 
-        // Logout button click event
         btnLogout.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -91,9 +83,9 @@ public class UserHomeScreenActivity extends AppCompatActivity {
     }
 
     /**
-     * User logout, which will set isLoggIn as false and clear user data from
+     * User logout, which will set isLoggedIn as false and clear user data from
      * SQLite users table.
-     * */
+     */
     private void logoutUser() {
         session.setLogin(false);
 

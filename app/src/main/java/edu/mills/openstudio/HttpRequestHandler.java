@@ -18,17 +18,16 @@ import org.json.JSONObject;
  * and Gagandeep Singh's <a href="http://stackoverflow.com/questions/30740359/namevaluepair-httpparams-httpconnection-params-deprecated-on-server-request-cl">StackOverflow answer</>.
  */
 class HttpRequestHandler {
-    private static final String OPENSTUDIO_URL = "http://open-studio.herokuapp.com/";
     private static final String POST = "POST";
     private static final String GET = "GET";
-    private static JSONObject jObj = null;
-    private static String json = "";
     private static final String URL = "URL";
     private static final String INPUT = "Input";
     private static final String LINE = "line";
     private static final String BUFFER_ERROR = "Buffer Error";
     private static final String JSON_PARSER = "JSON Parser";
     private static final String OBJECT = "object";
+    private static JSONObject jObj = null;
+    private static String json = "";
 
     /**
      * Makes a GET or POST HTTP request.

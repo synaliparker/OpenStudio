@@ -48,15 +48,6 @@ public class FindStudioActivity extends FragmentActivity implements OnMapReadyCa
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
         LocationListener{
-    private GoogleMap googleMap;
-    GoogleApiClient mapGoogleApiClient;
-    Location mapLastLocation;
-    Marker mapCurrentLocationMarker;
-    LocationRequest mapLocationRequest;
-
-    private HashMap<Marker, String> markerMap = new HashMap<>();
-    private Double lat = 0.00;
-    private Double lng = 0.00;
     private static final String TAG_ID = "id";
     private static final String TAG_NAME = "name";
     private static final String TAG_TYPE = "type";
@@ -66,8 +57,33 @@ public class FindStudioActivity extends FragmentActivity implements OnMapReadyCa
     private static final int LOCATION_REFRESH = 1000;
     private static final String GET_STUDIO_FAIL = "Failed to get studios";
     private static final String PERMISSION_DENIED ="Permission denied";
+    private HashMap<Marker, String> markerMap = new HashMap<>();
 
+    private GoogleMap googleMap;
+    /**
+     * Client giving access to Google Maps API.
+     */
+    GoogleApiClient mapGoogleApiClient;
+    /**
+     * The last location of the user.
+     */
+    Location mapLastLocation;
+    /**
+     * Marker showing current location of user.
+     */
+    Marker mapCurrentLocationMarker;
+    /**
+     * Handles location requests.
+     */
+    LocationRequest mapLocationRequest;
+
+    /**
+     * Google Map fragment to show studio locations on.
+     */
     SupportMapFragment fragment;
+    /**
+     * List of studio locations.
+     */
     ArrayList<HashMap<String,String>> locationList = new ArrayList<>();
 
     @Override
@@ -220,8 +236,8 @@ public class FindStudioActivity extends FragmentActivity implements OnMapReadyCa
     private void setUpMap() {
         for (int i = 0; i < locationList.size(); i++) {
             String id = locationList.get(i).get(TAG_ID);
-            lat = Double.parseDouble(locationList.get(i).get(TAG_LAT));
-            lng = Double.parseDouble(locationList.get(i).get(TAG_LNG));
+            Double lat = Double.parseDouble(locationList.get(i).get(TAG_LAT));
+            Double lng = Double.parseDouble(locationList.get(i).get(TAG_LNG));
             String name = locationList.get(i).get(TAG_NAME);
             String type = locationList.get(i).get(TAG_TYPE);
             Marker marker = googleMap.addMarker(new MarkerOptions().position(new LatLng(lat, lng)).title(name).snippet(type));

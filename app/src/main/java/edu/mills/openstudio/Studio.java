@@ -2,7 +2,10 @@ package edu.mills.openstudio;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Studio {
+/**
+ * Defines the format of a studio for Retrofit JSON parsing.
+ */
+class Studio {
     @SerializedName("id")
     private int id;
     @SerializedName("name")
@@ -26,121 +29,108 @@ public class Studio {
     @SerializedName("lng")
     private Double lng;
 
-    public Studio(String name, String owner, String type, String address, String contactInfo,
-                  String availability, String accessibility, String description, Double lat, Double lng) {
-        this.name = name;
-        this.type = type;
-        this.owner = owner;
-        this.address = address;
-        this.contactInfo = contactInfo;
-        this.availability = availability;
-        this.accessibility = accessibility;
-        this.description = description;
-        this.lat = lat;
-        this.lng = lng;
-    }
-
-    public Studio(int id, String name, String owner, String type, String address, String contactInfo,
-           String availability, String accessibility, String description, Double lat, Double lng) {
-        this.id = id;
-        this.name = name;
-        this.type = type;
-        this.owner = owner;
-        this.address = address;
-        this.contactInfo = contactInfo;
-        this.availability = availability;
-        this.accessibility = accessibility;
-        this.description = description;
-        this.lat = lat;
-        this.lng = lng;
-    }
-
+    /**
+     * Returns the studio's id
+     * @return id of the studio
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Sets the studio's id
+     * @param id the new studio id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     * Gets the studio's name
+     * @return the studio's name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Sets the studio's name to the given name
+     * @param name the new studio name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
-    public String getOwner() {
+    /**
+     * Gets the studio's owner
+     * @return the studio's owner
+     */
+    String getOwner() {
         return owner;
     }
 
-    public void setOwner(String owner) {
-        this.owner =  owner;
-    }
-
-    public String getAddress() {
+    /**
+     * Gets the studio's address
+     * @return the studio's address
+     */
+    String getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
+    /**
+     * Gets the studio's type
+     * @return the studio's type
+     */
     public String getType() {
         return type;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getContactInfo() {
+    /**
+     * Gets the studio's contact info (currently just emails)
+     * @return the studio's contact info
+     */
+    String getContactInfo() {
         return contactInfo;
     }
 
-    public void setContactInfo(String contactInfo) {
-        this.contactInfo = contactInfo;
-    }
-
-    public String getAvailability() {
+    /**
+     * Gets the studio's availability
+     * @return the studio's availability
+     */
+    String getAvailability() {
         return availability;
     }
 
-    public void setAvailability(String availability) {
-        this.availability = availability;
-    }
-
-    public String getAccessibility() {
+    /**
+     * Gets the studio's accessibility details
+     * @return the studio's accessibility
+     */
+    String getAccessibility() {
         return accessibility;
     }
 
-    public void setAccessibility(String accessibility) {
-        this.accessibility = accessibility;
-    }
-
-    public String getDescription() {
+    /**
+     * Gets the studio's description.
+     * @return the studio's description
+     */
+    String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Double getLat() {
+    /**
+     * Gets the studio's latitude.
+     * @return latitude of the studio's location
+     */
+    Double getLat() {
         return lat;
     }
 
-    public void setLat(Double lat) {
-        this.lat = lat;
-    }
-
-    public Double getLng() {
+    /**
+     * Gets the studio's longitude.
+     * @return longitude of the studio's location
+     */
+    Double getLng() {
         return lng;
-    }
-
-    public void setLng(Double lng) {
-        this.lng = lng;
     }
 }
 

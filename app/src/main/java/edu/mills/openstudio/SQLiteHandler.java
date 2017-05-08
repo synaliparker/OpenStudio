@@ -5,15 +5,12 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 import java.util.HashMap;
 
 /**
  * Handles the creation and opening of user authentication information.
- */
-public class SQLiteHandler extends SQLiteOpenHelper {
-
-    private static final String TAG = SQLiteHandler.class.getSimpleName();
+ **/
+class SQLiteHandler extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "android_api";
     private static final String TABLE_USER = "user";
@@ -24,10 +21,10 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     private static final String KEY_CREATED_AT = "created_at";
 
     /**
-     * Contructer for the class.
-     * @param context used to
-     */
-    public SQLiteHandler(Context context) {
+     * Constructor for the class.
+     * @param context the context
+     **/
+    SQLiteHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -39,48 +36,44 @@ public class SQLiteHandler extends SQLiteOpenHelper {
                 + KEY_EMAIL + " TEXT UNIQUE," + KEY_UID + " TEXT,"
                 + KEY_CREATED_AT + " TEXT" + ")";
         db.execSQL(CREATE_LOGIN_TABLE);
-
-        Log.d(TAG, "Database tables created");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // Drop older table if existed
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
-
-        // Create tables again
         onCreate(db);
     }
 
     /**
-     * Storing user details in database
-     * */
-    public void addUser(String name, String email, String uid, String created_at) {
+     * Stores user details in database.
+     * @param name Full name of the new user
+     * @param email Email address of the new user
+     * @param uid  Unique ID for the new user
+     * @param created_at Date and time the new user was created
+     */
+    void addUser(String name, String email, String uid, String created_at) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(KEY_NAME, name); // Name
-        values.put(KEY_EMAIL, email); // Email
-        values.put(KEY_UID, uid); // Email
-        values.put(KEY_CREATED_AT, created_at); // Created At
+        values.put(KEY_NAME, name);
+        values.put(KEY_EMAIL, email);
+        values.put(KEY_UID, uid);
+        values.put(KEY_CREATED_AT, created_at);
 
-        // Inserting Row
         long id = db.insert(TABLE_USER, null, values);
-        db.close(); // Closing database connection
-
-        Log.d(TAG, "New user inserted into sqlite: " + id);
+        db.close();
     }
 
     /**
-     * Getting user data from database
-     * */
-    public HashMap<String, String> getUserDetails() {
-        HashMap<String, String> user = new HashMap<String, String>();
+     * Gets user data from the database.
+     * @return user retrieved from database
+     */
+    HashMap<String, String> getUserDetails() {
+        HashMap<String, String> user = new HashMap<>();
         String selectQuery = "SELECT  * FROM " + TABLE_USER;
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
-        // Move to first row
         cursor.moveToFirst();
         if (cursor.getCount() > 0) {
             user.put(KEY_NAME, cursor.getString(1));
@@ -90,22 +83,17 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         }
         cursor.close();
         db.close();
-        // return user
-        Log.d(TAG, "Fetching user from Sqlite: " + user.toString());
 
         return user;
     }
 
     /**
-     * Re crate database Delete all tables and create them again
-     * */
-    public void deleteUsers() {
+     * Delete all tables and create them again.
+     */
+    void deleteUsers() {
         SQLiteDatabase db = this.getWritableDatabase();
-        // Delete All Rows
         db.delete(TABLE_USER, null, null);
         db.close();
-
-        Log.d(TAG, "Deleted all user info from sqlite");
     }
 
 }
