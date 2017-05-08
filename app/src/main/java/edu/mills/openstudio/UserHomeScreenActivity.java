@@ -1,8 +1,6 @@
 package edu.mills.openstudio;
 
 import java.util.HashMap;
-
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,7 +16,6 @@ public class UserHomeScreenActivity extends AppCompatActivity {
     private TextView txtName;
     private TextView txtEmail;
     private Button btnLogout;
-
     private SQLiteHandler db;
     private SessionManager session;
 
@@ -96,8 +93,6 @@ public class UserHomeScreenActivity extends AppCompatActivity {
         session.setLogin(false);
 
         db.deleteUsers();
-
-        // Launching the login activity
         Intent intent = new Intent(UserHomeScreenActivity.this, LoginActivity.class);
         startActivity(intent);
         finish();

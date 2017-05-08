@@ -4,4 +4,23 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="text_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <!--activity_add_studio.xml dimensions-->
+    <dimen name="name_field_margin">5dip</dimen>
+    <dimen name="name_field_bottom_margin">15dip</dimen>
+    <dimen name="owner_field_margin">5dip</dimen>
+    <dimen name="owner_field_bottom_margin">15dip</dimen>
+    <dimen name="studio_type_padding">10dip</dimen>
+    <dimen name="studio_spinner_margin">5dip</dimen>
+    <dimen name="studio_spinner_bottom_margin">15dip</dimen>
+    <dimen name="address_field_margin">5dip</dimen>
+    <dimen name="address_field_bottom_margin">15dip</dimen>
+    <dimen name="contact_field_margin">5dip</dimen>
+    <dimen name="contact_field_bottom_margin">15dip</dimen>
+    <dimen name="availability_field_margin">5dip</dimen>
+    <dimen name="availability_filed_bottom_margin">15dip</dimen>
+    <dimen name="accessibility_text">10dip</dimen>
+    <dimen name="accessibility_spinner_margin">5dip</dimen>
+    <dimen name="accessibility_spinner_bottom_margin">15dip</dimen>
+    <dimen name="description_field_margin">5dip</dimen>
+    <dimen name="description_field_bottom_margin">15dip</dimen>
 </resources>

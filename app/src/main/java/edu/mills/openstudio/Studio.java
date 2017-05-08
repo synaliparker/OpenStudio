@@ -2,9 +2,6 @@ package edu.mills.openstudio;
 
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by nadin on 5/4/2017.
- */
 public class Studio {
     @SerializedName("id")
     private int id;

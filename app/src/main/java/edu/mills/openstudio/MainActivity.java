@@ -1,25 +1,16 @@
 package edu.mills.openstudio;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
-    private TextView textHome;
-    private TextView textSearch;
-    private TextView textAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,16 +72,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickFindStudio(View view) {
         Intent intent = new Intent(this, FindStudioActivity.class);
-        startActivity(intent);
-    }
-
-    public void onClickAddStudio(View view){
-        Intent intent = new Intent(this, AddStudioActivity.class);
-        startActivity(intent);
-    }
-
-    public void onClickLogin(View view) {
-        Intent intent = new Intent(this,LoginActivity.class);
         startActivity(intent);
     }
 }

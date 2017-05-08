@@ -1,6 +1,5 @@
 package edu.mills.openstudio;
 
-import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,17 +8,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -100,25 +96,10 @@ public class StudioListActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<StudioResponse> call, Throwable t) {
-                Toast.makeText(StudioListActivity.this, "Failed to get studios", Toast.LENGTH_SHORT).show();
+                Toast.makeText(StudioListActivity.this, R.string.get_studio_fail, Toast.LENGTH_SHORT).show();
             }
         });
     }
-
-    public void onClickHome(View view){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
-    public void onClickFindStudio(View view){
-        Intent intent = new Intent(this, FindStudioActivity.class);
-        startActivity(intent);
-    }
-    public void onClickAccount(View view){
-        Intent intent = new Intent(this, UserHomeScreenActivity.class);
-        startActivity(intent);
-    }
-
-
 }
 
 

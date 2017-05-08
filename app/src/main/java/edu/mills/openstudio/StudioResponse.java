@@ -1,12 +1,7 @@
 package edu.mills.openstudio;
 
 import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
-
-/**
- * Created by nadin on 5/4/2017.
- */
 
 public class StudioResponse {
     @SerializedName("error")
