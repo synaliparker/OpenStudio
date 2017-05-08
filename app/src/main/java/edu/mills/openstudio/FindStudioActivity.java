@@ -157,22 +157,26 @@ public class FindStudioActivity extends FragmentActivity implements OnMapReadyCa
         call.enqueue(new Callback<StudioResponse>() {
             @Override
             public void onResponse(Call<StudioResponse> call, Response<StudioResponse> response) {
-                List<Studio> studios = response.body().getStudios();
-                for (Studio studio : studios) {
-                    HashMap<String, String> hashMap = new HashMap<>();
-                    hashMap.put(TAG_ID, Integer.toString(studio.getId()));
-                    hashMap.put(TAG_NAME, studio.getName());
-                    hashMap.put(TAG_TYPE, studio.getType());
-                    hashMap.put(TAG_LAT, Double.toString(studio.getLat()));
-                    hashMap.put(TAG_LNG, Double.toString(studio.getLng()));
-                    locationList.add(hashMap);
+                if (!response.body().getError()) {
+                    List<Studio> studios = response.body().getStudios();
+                    for (Studio studio : studios) {
+                        HashMap<String, String> hashMap = new HashMap<>();
+                        hashMap.put(TAG_ID, Integer.toString(studio.getId()));
+                        hashMap.put(TAG_NAME, studio.getName());
+                        hashMap.put(TAG_TYPE, studio.getType());
+                        hashMap.put(TAG_LAT, Double.toString(studio.getLat()));
+                        hashMap.put(TAG_LNG, Double.toString(studio.getLng()));
+                        locationList.add(hashMap);
+                    }
+                    if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        checkLocationPermission();
+                    }
+                    fragment = ((SupportMapFragment)
+                            getSupportFragmentManager().findFragmentById(R.id.map));
+                    fragment.getMapAsync(FindStudioActivity.this);
+                } else {
+                    Toast.makeText(FindStudioActivity.this, response.body().getErrorMsg(), Toast.LENGTH_LONG).show();
                 }
-                if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    checkLocationPermission();
-                }
-                fragment = ((SupportMapFragment)
-                        getSupportFragmentManager().findFragmentById(R.id.map));
-                fragment.getMapAsync(FindStudioActivity.this);
             }
 
             @Override

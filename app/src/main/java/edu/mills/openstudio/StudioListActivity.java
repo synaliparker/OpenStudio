@@ -69,33 +69,37 @@ public class StudioListActivity extends AppCompatActivity {
         call.enqueue(new Callback<StudioResponse>() {
             @Override
             public void onResponse(Call<StudioResponse> call, Response<StudioResponse> response) {
-                List<Studio> studios = response.body().getStudios();
-                for (Studio studio : studios) {
-                    String id = Integer.toString(studio.getId());
-                    String name = studio.getName();
-                    String type = studio.getType();
-                    HashMap<String, String> hashMap = new HashMap<>();
-                    hashMap.put(TAG_ID, id);
-                    hashMap.put(TAG_NAME, name);
-                    hashMap.put(TAG_TYPE,type);
-                    studioList.add(hashMap);
-                }
-                listView = (ListView) findViewById(android.R.id.list);
-                ListAdapter adapter = new SimpleAdapter(
-                        StudioListActivity.this, studioList,
-                        R.layout.single_studio_list, new String[]{
-                        TAG_ID, TAG_NAME,TAG_TYPE},
-                        new int[]{R.id.id, R.id.name, R.id.type});
-                listView.setAdapter(adapter);
-                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        String studioId = ((TextView) view.findViewById(R.id.id)).getText().toString();
-                        Intent intent = new Intent(getApplicationContext(), DetailStudioActivity.class);
-                        intent.putExtra(TAG_ID, studioId);
-                        startActivity(intent);
+                if (!response.body().getError()) {
+                    List<Studio> studios = response.body().getStudios();
+                    for (Studio studio : studios) {
+                        String id = Integer.toString(studio.getId());
+                        String name = studio.getName();
+                        String type = studio.getType();
+                        HashMap<String, String> hashMap = new HashMap<>();
+                        hashMap.put(TAG_ID, id);
+                        hashMap.put(TAG_NAME, name);
+                        hashMap.put(TAG_TYPE,type);
+                        studioList.add(hashMap);
                     }
-                });
+                    listView = (ListView) findViewById(android.R.id.list);
+                    ListAdapter adapter = new SimpleAdapter(
+                            StudioListActivity.this, studioList,
+                            R.layout.single_studio_list, new String[]{
+                            TAG_ID, TAG_NAME,TAG_TYPE},
+                            new int[]{R.id.id, R.id.name, R.id.type});
+                    listView.setAdapter(adapter);
+                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            String studioId = ((TextView) view.findViewById(R.id.id)).getText().toString();
+                            Intent intent = new Intent(getApplicationContext(), DetailStudioActivity.class);
+                            intent.putExtra(TAG_ID, studioId);
+                            startActivity(intent);
+                        }
+                    });
+                } else {
+                    Toast.makeText(StudioListActivity.this, response.body().getErrorMsg(), Toast.LENGTH_LONG).show();
+                }
             }
 
             @Override
