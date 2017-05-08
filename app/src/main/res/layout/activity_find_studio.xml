@@ -15,10 +15,10 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dip"
         android:layout_marginBottom="15dip"
-        android:paddingLeft="10dip"
-        android:paddingRight="10dip"
-        android:paddingTop="10dip"
-        android:paddingBottom="10dip"
+        android:paddingLeft="@dimen/surrounding_padding"
+        android:paddingRight="@dimen/surrounding_padding"
+        android:paddingTop="@dimen/surrounding_padding"
+        android:paddingBottom="@dimen/surrounding_padding"
         android:entries="@array/studio_search_array"
         android:prompt="@string/type" />
     <LinearLayout
@@ -32,11 +32,11 @@
             android:id="@+id/find_studio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dip"
+            android:layout_marginTop="@dimen/surrounding_padding"
             android:background="@color/btn_login"
             android:drawableLeft="@android:drawable/ic_menu_search"
-            android:paddingLeft="10dip"
-            android:paddingRight="10dip"
+            android:paddingLeft="@dimen/surrounding_padding"
+            android:paddingRight="@dimen/surrounding_padding"
             android:text="Find Studios"
             android:textColor="@color/white" />
 
@@ -44,13 +44,13 @@
             android:id="@+id/studio_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dip"
+            android:layout_marginTop="@dimen/surrounding_padding"
             android:background="@color/main_btn"
             android:onClick="onClickStudioList"
             android:orientation="vertical"
-            android:layout_marginLeft="25dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dip"
+            android:layout_marginLeft="@dimen/extra_button_margin"
+            android:paddingLeft="@dimen/surrounding_padding"
+            android:paddingRight="@dimen/surrounding_padding"
             android:text="Studio List"
             android:textColor="@color/white" />
     </LinearLayout>
