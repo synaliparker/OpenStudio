@@ -2,7 +2,10 @@ package edu.mills.openstudio;
 
 import com.google.gson.annotations.SerializedName;
 
-public class UserResponse {
+/**
+ * Defines the format of a response from a studio API call for Retrofit JSON parsing.
+ */
+class UserResponse {
     @SerializedName("error")
     private Boolean error;
     @SerializedName("error_msg")
@@ -12,35 +15,35 @@ public class UserResponse {
     @SerializedName("user")
     private User user;
 
-    public Boolean getError() {
+    /**
+     * Returns the error status of the API call.
+     * @return true if request was successful, false if there was an error
+     */
+    Boolean getError() {
         return error;
     }
 
-    public void setError(Boolean error) {
-        this.error = error;
-    }
-
-    public String getErrorMsg() {
+    /**
+     * Returns the error message of the request if it was unsuccessful.
+     * @return the error message
+     */
+    String getErrorMsg() {
         return errorMsg;
     }
 
-    public void setErrorMsg(String errorMsg) {
-        this.errorMsg = errorMsg;
-    }
-
-    public String getUid() {
+    /**
+     * Returns the unique id of the user
+     * @return the user's id
+     */
+    String getUid() {
         return uid;
     }
 
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
-
-    public User getUser() {
+    /**
+     * Gets the user returned from the API call.
+     * @return the user returned in the response
+     */
+    User getUser() {
         return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 }

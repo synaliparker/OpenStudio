@@ -3,7 +3,10 @@ package edu.mills.openstudio;
 import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
-public class StudioResponse {
+/**
+ * Defines the format of a response from a studio API call for Retrofit JSON parsing.
+ */
+class StudioResponse {
     @SerializedName("error")
     private Boolean error;
     @SerializedName("error_msg")
@@ -11,27 +14,27 @@ public class StudioResponse {
     @SerializedName("studios")
     private List<Studio> studios;
 
-    public List<Studio> getStudios() {
+    /**
+     * Gets a list of studios returned from the API call.
+     * @return the studios returned in the response
+     */
+    List<Studio> getStudios() {
         return studios;
     }
 
-    public void setStudios(List<Studio> studios) {
-        this.studios = studios;
-    }
-
-    public Boolean getError() {
+    /**
+     * Returns the error status of the API call.
+     * @return true if request was successful, false if there was an error
+     */
+    Boolean getError() {
         return error;
     }
 
-    public void setError(Boolean error) {
-        this.error = error;
-    }
-
-    public String getErrorMsg() {
+    /**
+     * Returns the error message of the request if it was unsuccessful.
+     * @return the error message
+     */
+    String getErrorMsg() {
         return errorMsg;
-    }
-
-    public void setErrorMsg(String errorMsg) {
-        this.errorMsg = errorMsg;
     }
 }

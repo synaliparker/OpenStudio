@@ -12,7 +12,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 
 /**
- * User login page.
+ * User login page. Users must be logged in to access the app.
  */
 public class LoginActivity extends Activity {
     private EditText inputEmail;
@@ -71,7 +71,7 @@ public class LoginActivity extends Activity {
                     db.addUser(user.getName(), user.getEmail(), response.body().getUid(), user.getCreatedAt());
                     Intent intent = new Intent(getApplicationContext(), UserHomeScreenActivity.class);
                     startActivity(intent);
-                    finish();;
+                    finish();
                 } else {
                     Toast.makeText(getApplicationContext(), response.body().getErrorMsg(), Toast.LENGTH_LONG).show();
                 }

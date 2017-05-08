@@ -24,13 +24,13 @@ public class ImageDetailActivity extends Activity {
     };
 
     /**
-     * Credit: http://stackoverflow.com/questions/29991780/how-could-i-develop-an-image-carousel-on-android
+     * Adapter from <a href="http://stackoverflow.com/questions/29991780/how-could-i-develop-an-image-carousel-on-android">StackOverflow</a>
      */
-    public class ImagePagerAdapter extends PagerAdapter {
+    private class ImagePagerAdapter extends PagerAdapter {
         private Context mContext;
         private LayoutInflater mLayoutInflater;
 
-        public ImagePagerAdapter(Context context) {
+        ImagePagerAdapter(Context context) {
             mContext = context;
             mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }

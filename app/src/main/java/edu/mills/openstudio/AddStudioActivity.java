@@ -6,17 +6,13 @@ import java.util.List;
 import java.util.Map;
 import org.json.JSONException;
 import org.json.JSONObject;
-import android.app.Activity;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,6 +27,14 @@ import retrofit2.Response;
  */
 public class AddStudioActivity extends AppCompatActivity {
     private static final String GEOCODE_URL = "http://maps.googleapis.com/maps/api/geocode/json";
+    private static final String REQUIRED_FIELD = "Field is required";
+    private static final String LATITUDE = "lat";
+    private static final String LONGITUDE = "lng";
+    private static final String GET = "GET";
+    private static final String RESULTS = "results";
+    private static final String GEOMETRY = "geometry";
+    private static final String ADDRESS = "address";
+    private static final String LOCATION = "location";
     private EditText inputName;
     private EditText inputOwner;
     private Spinner inputStudioType;
@@ -48,15 +52,6 @@ public class AddStudioActivity extends AppCompatActivity {
     String accessibility;
     String description;
     HttpRequestHandler httpRequestHandler = new HttpRequestHandler();
-    private static final String REQUIRED_FIELD = "Field is required";
-    private static final String LATITUDE = "lat";
-    private static final String LONGITUDE = "lng";
-    private static final String GET = "GET";
-    private static final String RESULTS = "results";
-    private static final String GEOMETRY = "geometry";
-    private static final String ADDRESS = "address";
-    private static final String LOCATION = "location";
-    private static final String ON_POST_EXECUTE = "onPostExecute";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -163,7 +158,6 @@ public class AddStudioActivity extends AppCompatActivity {
                 Toast.makeText(AddStudioActivity.this, R.string.convert_studio_fail, Toast.LENGTH_SHORT).show();
                 refreshAddForm();
             } else {
-                Log.d(ON_POST_EXECUTE, coordinates.toString());
                 postStudio(coordinates.get(LATITUDE), coordinates.get(LONGITUDE));
             }
         }

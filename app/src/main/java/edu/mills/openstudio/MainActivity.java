@@ -8,10 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
 /**
- * Page where users can choose to navigate to studios, workshops and tools.
+ * Home page where users can choose to navigate to studios, workshops and tools.
  */
 public class MainActivity extends AppCompatActivity {
 
@@ -75,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Launch FindStudioActivity on button click.
-     * @param view The page view for FindListActiivty
+     * @param view The page view for FindListActivity
      */
     public void onClickFindStudio(View view) {
         Intent intent = new Intent(this, FindStudioActivity.class);

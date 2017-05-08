@@ -14,9 +14,10 @@
     <!--FindStudioActivity strings-->
     <string name="on_connection_failed">Unable to connect to GoogleMap.</string>
     <string name="on_connection_suspended">Connection to GoogleMap stopped.</string>
+
     <!--LoginActivity strings-->
-    <string name="complete_all_fields">"Please complete all fields"</string>
-    <string name="unable_to_login">"Unable to login"</string>
+    <string name="complete_all_fields">Please complete all field"</string>
+    <string name="unable_to_login">Unable to login</string>
 
     <!--RegisterActivity strings-->
     <string name="register_success">User successfully registered</string>
