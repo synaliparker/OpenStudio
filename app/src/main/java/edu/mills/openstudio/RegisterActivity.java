@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -97,5 +99,27 @@ public class RegisterActivity extends Activity {
                 Toast.makeText(getApplicationContext(), R.string.register_fail, Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.about:
+                //Code to run when the about item is clicked
+                Intent aboutIntent = new Intent(this, AboutActivity.class);
+                startActivity(aboutIntent);
+                return true;
+            case R.id.action_settings:
+                //Code to run when the settings item is clicked
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

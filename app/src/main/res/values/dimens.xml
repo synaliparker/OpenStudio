@@ -30,6 +30,7 @@
     <dimen name="register_text_size">15sp</dimen>
 
     <!--activity_main.xml dimensions-->
+    <dimen name="logo_top_margin">60dp</dimen>
     <dimen name="logo_size">125dp</dimen>
     <dimen name="title_text">20sp</dimen>
     <dimen name="title_bottom_padding">15dp</dimen>
