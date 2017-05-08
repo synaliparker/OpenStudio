@@ -10,8 +10,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 class ApiClient {
 
-    static final String BASE_URL = "https://open-studio.herokuapp.com/";
     private static Retrofit retrofit = null;
+    private static final String BASE_URL = "https://open-studio.herokuapp.com/";
 
     /**
      * Create a Retrofit instance that connects to the REST API.
