@@ -13,6 +13,7 @@
     <ImageView
         android:layout_width="@dimen/logo_size"
         android:layout_height="@dimen/logo_size"
+        android:layout_marginTop="@dimen/logo_top_margin"
         android:src="@drawable/open_studio_logo" />
     <TextView
         android:layout_width="wrap_content"
