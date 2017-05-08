@@ -45,14 +45,41 @@ public class AddStudioActivity extends AppCompatActivity {
     private EditText inputAvailability;
     private Spinner inputAccessibility;
     private EditText inputDescription;
+    /**
+     * Name of the person adding the studio to the database.
+     */
     String name;
+    /**
+     * Name of the person or company who owns the studio.
+     */
     String owner;
+    /**
+     * The type of art/medium that the studio specializes in.
+     */
     String studioType;
+    /**
+     * The address of the studio being added - will be translated into coordinates.
+     */
     String address;
+    /**
+     * The email of the owner of the studio.
+     */
     String email;
+    /**
+     * The days and times that the studio is open for people to visit.
+     */
     String availability;
+    /**
+     * The different categories of accessibility that the studio has available.
+     */
     String accessibility;
+    /**
+     * A brief description of the studio space.
+     */
     String description;
+    /**
+     * Handles HTTP requests.
+     */
     HttpRequestHandler httpRequestHandler = new HttpRequestHandler();
 
     @Override
