@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/surrounding_padding"
             android:background="@color/btn_login"
-            android:drawableLeft="@android:drawable/ic_menu_search"
+            android:drawableLeft="@drawable/ic_action_search"
             android:paddingLeft="@dimen/surrounding_padding"
             android:paddingRight="@dimen/surrounding_padding"
             android:text="Find Studios"
@@ -46,6 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/surrounding_padding"
             android:background="@color/main_btn"
+            android:drawableLeft="@drawable/ic_action_format_list_bulleted"
             android:onClick="onClickStudioList"
             android:orientation="vertical"
             android:layout_marginLeft="@dimen/extra_button_margin"
@@ -84,4 +85,3 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/buttons"/>
 </RelativeLayout>
-
