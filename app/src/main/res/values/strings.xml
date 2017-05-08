@@ -28,7 +28,8 @@
     <string name="add_studio">Add Studio</string>
     <string name="studio_text">Search studios</string>
     <string name="location_text">Search location</string>
-    <string name="main_page_button">Home</string>
+    <string name="find_studio_test_button">Find Studios</string>
+    <string name="main_activity_button">Home</string>
 
     <string name="owner_name">Owner Name</string>
     <string name="type">Studio Type</string>
