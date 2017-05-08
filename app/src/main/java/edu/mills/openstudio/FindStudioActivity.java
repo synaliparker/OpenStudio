@@ -65,7 +65,7 @@ public class FindStudioActivity extends FragmentActivity implements OnMapReadyCa
     private static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
     private static final int LOCATION_REFRESH = 1000;
     private static final String GET_STUDIO_FAIL = "Failed to get studios";
-    private static final String PERMISSION_DENIED = "permission denied";
+    private static final String PERMISSION_DENIED ="Permission denied";
 
     SupportMapFragment fragment;
     ArrayList<HashMap<String,String>> locationList = new ArrayList<>();
@@ -108,7 +108,6 @@ public class FindStudioActivity extends FragmentActivity implements OnMapReadyCa
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Click action
                 Intent intent = new Intent(FindStudioActivity.this, AddStudioActivity.class);
                 startActivity(intent);
             }
@@ -126,12 +125,10 @@ public class FindStudioActivity extends FragmentActivity implements OnMapReadyCa
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.add_studio:
-                //Code to run when the Create Order item is clicked
                 Intent intent = new Intent(this, AddStudioActivity.class);
                 startActivity(intent);
                 return true;
             case R.id.action_settings:
-                //Code to run when the settings item is clicked
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -234,7 +231,7 @@ public class FindStudioActivity extends FragmentActivity implements OnMapReadyCa
 
     /**
      * Launch StudioListActivity on button click.
-     * @param view The page view for StudioListActiivty
+     * @param view the page view for StudioListActivity
      */
     public void onClickStudioList(View view) {
         Intent intent = new Intent(this, StudioListActivity.class);
@@ -271,7 +268,7 @@ public class FindStudioActivity extends FragmentActivity implements OnMapReadyCa
     /**
      * Throws a toast when an unresolved error occurred and a connection to GoogleMap's API could not
      * be called.
-     * @param connectionResult The error code for the failed connection.
+     * @param connectionResult the error code for the failed connection
      */
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         Toast.makeText(FindStudioActivity.this, R.string.on_connection_failed, Toast.LENGTH_SHORT).show();

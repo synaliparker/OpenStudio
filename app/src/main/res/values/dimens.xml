@@ -2,25 +2,57 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="text_margin">16dp</dimen>
+    <dimen name="text_margin">16sp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+    <!--activity_about.xml dimensions-->
+    <dimen name="side_padding">35dp</dimen>
+
     <!--activity_add_studio.xml dimensions-->
-    <dimen name="name_field_margin">5dip</dimen>
-    <dimen name="name_field_bottom_margin">15dip</dimen>
-    <dimen name="owner_field_margin">5dip</dimen>
-    <dimen name="owner_field_bottom_margin">15dip</dimen>
+    <dimen name="field_margin">5dip</dimen>
+    <dimen name="field_bottom_margin">15dip</dimen>
     <dimen name="studio_type_padding">10dip</dimen>
-    <dimen name="studio_spinner_margin">5dip</dimen>
-    <dimen name="studio_spinner_bottom_margin">15dip</dimen>
-    <dimen name="address_field_margin">5dip</dimen>
-    <dimen name="address_field_bottom_margin">15dip</dimen>
-    <dimen name="contact_field_margin">5dip</dimen>
-    <dimen name="contact_field_bottom_margin">15dip</dimen>
-    <dimen name="availability_field_margin">5dip</dimen>
-    <dimen name="availability_filed_bottom_margin">15dip</dimen>
-    <dimen name="accessibility_text">10dip</dimen>
-    <dimen name="accessibility_spinner_margin">5dip</dimen>
-    <dimen name="accessibility_spinner_bottom_margin">15dip</dimen>
-    <dimen name="description_field_margin">5dip</dimen>
-    <dimen name="description_field_bottom_margin">15dip</dimen>
+    <dimen name="accessibility_text">10sp</dimen>
+
+    <!--activity_detail_studio.xml dimensions-->
+    <dimen name="surrounding_padding">10dip</dimen>
+    <dimen name="extra_padding">20dip</dimen>
+    <dimen name="standard_text_size">17sp</dimen>
+    <dimen name="larger_text_size">25sp</dimen>
+
+    <!--activity_find_studio.xml dimensions-->
+    <dimen name="extra_button_margin">25dp</dimen>
+
+    <!--activity_login.xml dimensions-->
+    <dimen name="padding">10dp</dimen>
+    <dimen name="margin_bottom">10dp</dimen>
+    <dimen name="top_button_margin">40dip</dimen>
+    <dimen name="register_text_size">15sp</dimen>
+
+    <!--activity_main.xml dimensions-->
+    <dimen name="logo_size">125dp</dimen>
+    <dimen name="title_text">20sp</dimen>
+    <dimen name="title_bottom_padding">15dp</dimen>
+
+    <!--activity_register.xml dimensions-->
+    <dimen name="login_button_text">15sp</dimen>
+    <dimen name="layout_padding">20dp</dimen>
+
+    <!--activity_splash.xml dimensions-->
+    <dimen name="splash_logo">175dp</dimen>
+    <dimen name="splash_text">20sp</dimen>
+    <dimen name="splash_margin">10dp</dimen>
+
+    <!--activity_studio_list.xml dimensions-->
+    <dimen name="listview_height">431dp</dimen>
+    
+    <!--activity_user_home_screen.xml dimensions-->
+    <dimen name="welcome_text">20dp</dimen>
+    <dimen name="name_text">24dp</dimen>
+    <dimen name="email_text">13dp</dimen>
+    <dimen name="btn_text">15dp</dimen>
+
+    <!--single_studio_list.xml dimensions-->
+    <dimen name="single_studio_text">17sp</dimen>
+    <dimen name="top_padding">6dp</dimen>
 </resources>

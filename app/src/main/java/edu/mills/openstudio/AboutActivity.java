@@ -6,7 +6,7 @@ import android.os.Bundle;
 /**
  * About page introducing OpenStudio.
  */
-
+ 
 public class AboutActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {

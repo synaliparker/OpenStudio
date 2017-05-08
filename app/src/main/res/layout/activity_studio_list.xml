@@ -7,12 +7,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     tools:context="edu.mills.openstudio.StudioListActivity"
-    android:padding="15dp">
+    android:padding="@dimen/title_bottom_padding">
 
     <ListView
         android:id="@android:id/list"
         android:layout_width="match_parent"
-        android:layout_height="431dp">
+        android:layout_height="@dimen/listview_height">
     </ListView>
 
     <android.support.design.widget.BottomNavigationView
@@ -26,66 +26,3 @@
         design:menu="@menu/bottom_nav_items"/>
 </RelativeLayout>
 
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="0dp"-->
-        <!--android:orientation="horizontal"-->
-        <!--android:layout_weight="1"-->
-        <!--android:gravity="center|bottom"-->
-        <!--android:background="@color/black">-->
-
-        <!--<Button-->
-            <!--android:id="@+id/nav_to_home"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginTop="10dip"-->
-            <!--android:background="@color/black"-->
-            <!--android:onClick="onClickHome"-->
-            <!--android:paddingLeft="10dip"-->
-            <!--android:paddingRight="10dip"-->
-            <!--android:text="@string/string_home"-->
-            <!--android:textColor="@color/white" />-->
-
-        <!--<Button-->
-            <!--android:id="@+id/nav_to_findstudio"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginTop="10dip"-->
-            <!--android:background="@color/black"-->
-            <!--android:onClick="onClickFindStudio"-->
-            <!--android:paddingLeft="10dip"-->
-            <!--android:paddingRight="10dip"-->
-            <!--android:text="@string/string_search_studios"-->
-            <!--android:textColor="@color/white" />-->
-
-        <!--<Button-->
-            <!--android:id="@+id/nav_to_account"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginTop="10dip"-->
-            <!--android:background="@color/black"-->
-            <!--android:onClick="onClickAccount"-->
-            <!--android:paddingLeft="10dip"-->
-            <!--android:paddingRight="10dip"-->
-            <!--android:text="@string/string_account"-->
-            <!--android:textColor="@color/white" />-->
-    <!--</LinearLayout>-->
-
-    <!--<RelativeLayout-->
-    <!--android:orientation="horizontal"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="0dp">-->
-
-    <!--<android.support.design.widget.BottomNavigationView-->
-    <!--android:id="@+id/bottom_navigation"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--app:itemBackground="@color/black"-->
-    <!--app:itemIconTint="@color/white"-->
-    <!--app:itemTextColor="@color/white"-->
-    <!--design:menu="@menu/bottom_nav_items"-->
-    <!--android:layout_gravity="start"-->
-    <!--android:layout_alignParentBottom="true"-->
-    <!--android:layout_alignParentStart="true"/>-->
-
-    <!--</RelativeLayout>-->
