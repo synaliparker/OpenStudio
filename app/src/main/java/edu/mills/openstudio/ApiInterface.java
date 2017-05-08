@@ -1,18 +1,15 @@
 package edu.mills.openstudio;
 
-import java.util.Map;
-import java.util.Observable;
-
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.http.Field;
-import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
-
+/**
+ * Interface for @GET and @POST API calls.
+ */
 public interface ApiInterface {
     public static final String ALL_STUDIOS_PHP = "get_all_studios.php";
     public static final String STUDIO_DETAILS_PHP = "get_studio_details.php";
