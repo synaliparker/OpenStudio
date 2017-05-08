@@ -37,6 +37,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * Provide a place for users to view and search for studios based on their locations.
+ * Users will be able to click on the marker to see a info window with the studio name and type.
+ * Clicking on the info window will open the studio's detail page.
+ * Users are able to add studios from the page.
+ */
 public class FindStudioActivity extends FragmentActivity implements OnMapReadyCallback,
         GoogleMap.OnInfoWindowClickListener,
         GoogleApiClient.ConnectionCallbacks,
@@ -59,7 +65,7 @@ public class FindStudioActivity extends FragmentActivity implements OnMapReadyCa
     private static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
     private static final int LOCATION_REFRESH = 1000;
     private static final String GET_STUDIO_FAIL = "Failed to get studios";
-    private static final String PERMISSION_DENIED = "permission denied";
+    private static final String PERMISSION_DENIED ="Permission denied";
 
     SupportMapFragment fragment;
     ArrayList<HashMap<String,String>> locationList = new ArrayList<>();
@@ -108,6 +114,19 @@ public class FindStudioActivity extends FragmentActivity implements OnMapReadyCa
                     }
 
                 });
+      
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FindStudioActivity.this, AddStudioActivity.class);
+                startActivity(intent);
+            }
+        });
+        loadStudios();
     }
 
     @Override
@@ -125,7 +144,6 @@ public class FindStudioActivity extends FragmentActivity implements OnMapReadyCa
                 startActivity(aboutIntent);
                 return true;
             case R.id.action_settings:
-                //Code to run when the settings item is clicked
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -183,7 +201,9 @@ public class FindStudioActivity extends FragmentActivity implements OnMapReadyCa
         }
         googleMap.setOnInfoWindowClickListener(this);
     }
-
+    /**
+     * Builds a new GoogleApiClient object to communicate with Google's APIs.
+     */
     protected synchronized void buildGoogleApiClient(){
         mapGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
@@ -209,11 +229,10 @@ public class FindStudioActivity extends FragmentActivity implements OnMapReadyCa
 
     @Override
     public void onConnectionSuspended(int i) {
-
+        Toast.makeText(FindStudioActivity.this, R.string.on_connection_suspended, Toast.LENGTH_SHORT).show();
     }
 
-    public void setUpMap() {
-        // marker loop
+    private void setUpMap() {
         for (int i = 0; i < locationList.size(); i++) {
             String id = locationList.get(i).get(TAG_ID);
             lat = Double.parseDouble(locationList.get(i).get(TAG_LAT));
@@ -224,6 +243,11 @@ public class FindStudioActivity extends FragmentActivity implements OnMapReadyCa
             markerMap.put(marker, id);
         }
     }
+
+    /**
+     * Launch StudioListActivity on button click.
+     * @param view the page view for StudioListActivity
+     */
     public void onClickStudioList(View view) {
         Intent intent = new Intent(this, StudioListActivity.class);
         startActivity(intent);
@@ -245,22 +269,24 @@ public class FindStudioActivity extends FragmentActivity implements OnMapReadyCa
             mapCurrentLocationMarker.remove();
         }
 
-        //Place current location marker
         LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
 
-        //move map camera
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         googleMap.animateCamera(CameraUpdateFactory.zoomTo(11));
 
-        //stop location updates
         if (mapGoogleApiClient != null) {
             LocationServices.FusedLocationApi.removeLocationUpdates(mapGoogleApiClient, this);
         }
 
     }
 
+    /**
+     * Throws a toast when an unresolved error occurred and a connection to GoogleMap's API could not
+     * be called.
+     * @param connectionResult the error code for the failed connection
+     */
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
+        Toast.makeText(FindStudioActivity.this, R.string.on_connection_failed, Toast.LENGTH_SHORT).show();
     }
 
     private boolean checkLocationPermission() {
@@ -268,22 +294,15 @@ public class FindStudioActivity extends FragmentActivity implements OnMapReadyCa
                 Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
 
-            // Asking user if explanation is needed
             if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                     Manifest.permission.ACCESS_FINE_LOCATION)) {
 
-                // Show an explanation to the user *asynchronously* -- don't block
-                // this thread waiting for the user's response! After the user
-                // sees the explanation, try again to request the permission.
-
-                //Prompt the user once explanation has been shown
                 ActivityCompat.requestPermissions(this,
                         new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                         MY_PERMISSIONS_REQUEST_LOCATION);
 
 
             } else {
-                // No explanation needed, we can request the permission.
                 ActivityCompat.requestPermissions(this,
                         new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                         MY_PERMISSIONS_REQUEST_LOCATION);
@@ -299,12 +318,8 @@ public class FindStudioActivity extends FragmentActivity implements OnMapReadyCa
                                            String permissions[], int[] grantResults) {
         switch (requestCode) {
             case MY_PERMISSIONS_REQUEST_LOCATION: {
-                // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-                    // permission was granted. Do the
-                    // contacts-related task you need to do.
                     if (ContextCompat.checkSelfPermission(this,
                             Manifest.permission.ACCESS_FINE_LOCATION)
                             == PackageManager.PERMISSION_GRANTED) {
@@ -316,15 +331,10 @@ public class FindStudioActivity extends FragmentActivity implements OnMapReadyCa
                     }
 
                 } else {
-
-                    // Permission denied, Disable the functionality that depends on this permission.
                     Toast.makeText(this, PERMISSION_DENIED, Toast.LENGTH_LONG).show();
                 }
                 return;
             }
-            // other 'case' lines to check for other permissions this app might request.
-            // You can add here other case statements according to your requirement.
         }
     }
-
 }

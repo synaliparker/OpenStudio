@@ -1,5 +1,4 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -9,8 +8,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginLeft="@dimen/layout_padding"
+        android:layout_marginRight="@dimen/layout_padding"
         android:gravity="center"
         android:orientation="vertical" >
 
@@ -18,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/welcome"
-            android:textSize="20dp" />
+            android:textSize="@dimen/welcome_text" />
 
         <TextView
             android:id="@+id/full_name"
@@ -26,41 +25,40 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:textColor="@color/white"
-            android:textSize="24dp" />
+            android:textSize="@dimen/name_text" />
 
         <TextView
             android:id="@+id/email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="13dp" />
+            android:textSize="@dimen/email_text" />
 
         <Button
             android:id="@+id/nav_to_map"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dip"
-            android:background="@color/btn_logut_bg"
+            android:layout_marginTop="@dimen/top_button_margin"
+            android:background="@color/btn_logout_bg"
             android:text="@string/find_studio_test_button"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="15dp"
+            android:textSize="@dimen/btn_text"
             android:onClick="onClickNavFindStudio"/>
         <Button
             android:id="@+id/btnLogout"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dip"
-            android:background="@color/btn_logut_bg"
+            android:layout_marginTop="@dimen/top_button_margin"
+            android:background="@color/btn_logout_bg"
             android:text="@string/btn_logout"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="15dp" />
+            android:textSize="@dimen/btn_text" />
     </LinearLayout>
     <RelativeLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
         <android.support.design.widget.BottomNavigationView
             android:id="@+id/bottom_navigation"

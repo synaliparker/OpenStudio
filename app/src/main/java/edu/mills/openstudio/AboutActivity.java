@@ -8,10 +8,6 @@ import android.support.design.widget.BottomNavigationView;
 import android.view.Menu;
 import android.view.MenuItem;
 
-/**
- * Created by Evetallula on 5/4/2017.
- */
-
 public class AboutActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
