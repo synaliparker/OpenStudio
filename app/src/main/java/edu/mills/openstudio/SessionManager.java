@@ -20,7 +20,6 @@ public class SessionManager {
 
     // Shared preferences file name
     private static final String PREF_NAME = "AndroidHiveLogin";
-
     private static final String KEY_IS_LOGGEDIN = "isLoggedIn";
 
     public SessionManager(Context context) {

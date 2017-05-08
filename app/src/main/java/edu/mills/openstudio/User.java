@@ -2,16 +2,11 @@ package edu.mills.openstudio;
 
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by nadin on 5/4/2017.
- */
 public class User {
     @SerializedName("name")
     private String name;
     @SerializedName("email")
     private String email;
-//    @SerializedName("password")
-//    private String password;
     @SerializedName("created_at")
     private String createdAt;
 
@@ -20,12 +15,6 @@ public class User {
         this.email = email;
         this.createdAt = createdAt;
     }
-
-//    public User(String name, String email, String password) {
-//        this.name = name;
-//        this.email = email;
-//        this.password = password;
-//    }
 
     public String getName() {
         return name;
@@ -46,10 +35,6 @@ public class User {
     public String getCreatedAt() {
         return createdAt;
     }
-
-//    public void setPassword(String password) {
-//        this.password = password;
-//    }
 }
 
 

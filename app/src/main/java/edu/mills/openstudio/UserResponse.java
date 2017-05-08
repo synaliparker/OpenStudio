@@ -2,12 +2,6 @@ package edu.mills.openstudio;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
-/**
- * Created by nadin on 5/4/2017.
- */
-
 public class UserResponse {
     @SerializedName("error")
     private Boolean error;
@@ -49,5 +43,4 @@ public class UserResponse {
     public void setUser(User user) {
         this.user = user;
     }
-
 }

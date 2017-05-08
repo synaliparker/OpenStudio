@@ -4,26 +4,29 @@
     <string name="add_studio_success">Studio added successfully</string>
     <string name="add_studio_fail">Failed to add new studio</string>
     <string name="convert_studio_fail">Failed to convert address to coordinates</string>
+
     <!--LoginActivity strings-->
     <string name="complete_all_fields">"Please complete all fields"</string>
     <string name="unable_to_login">"Unable to login"</string>
-    <!--MainActivity strings-->
+
     <!--RegisterActivity strings-->
-    <!--SessionManager strings-->
-    <!--SQLiteHandler strings-->
-    <!--Studio strings-->
+    <string name="register_success">User successfully registered</string>
+    <string name="register_fail">Unable to register</string>
+
     <!--StudioListActivity strings-->
-    <!--StudioResponse strings-->
-    <!--User strings-->
-    <!-- UserHomeScreenActivity strings-->
-    <!--UserResponse strings-->
+    <string name="get_studio_fail">Failed to get studios</string>
+
+    <!--MAYBE XML STRINGS-->
+    <!--activity_add_studio.xml strings-->
+    <string name="studio_name">Studio Name</string>
+
     <string name="app_name">OpenStudio</string>
     <string name="action_settings">Settings</string>
     <string name="add_studio">Add Studio</string>
     <string name="studio_text">Search studios</string>
     <string name="location_text">Search location</string>
     <string name="find_studio_test_button">Find Studios</string>
-    <string name="studio_name">Studio Name</string>
+
     <string name="owner_name">Owner Name</string>
     <string name="type">Studio Type</string>
     <string name="address">Address</string>

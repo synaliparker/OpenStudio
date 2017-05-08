@@ -10,73 +10,77 @@
         <EditText android:id="@+id/name"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:layout_marginBottom="15dip"
+            android:layout_margin="@dimen/name_field_margin"
+            android:layout_marginBottom="@dimen/name_field_bottom_margin"
             android:hint="@string/studio_name"/>
-        <!--android:inputType="text"/>-->
+
         <EditText android:id="@+id/owner"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:layout_marginBottom="15dip"
+            android:layout_margin="@dimen/owner_field_margin"
+            android:layout_marginBottom="@dimen/owner_field_bottom_margin"
             android:hint="@string/owner_name"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="10dip"
+            android:paddingLeft="@dimen/studio_type_padding"
             android:text="@string/type"/>
         <Spinner
             android:id="@+id/type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:layout_marginBottom="15dip"
+            android:layout_margin="@dimen/studio_spinner_margin"
+            android:layout_marginBottom="@dimen/studio_spinner_bottom_margin"
             android:entries="@array/studio_type_array"
             android:prompt="@string/type" />
+
         <EditText android:id="@+id/address"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dip"
+            android:layout_margin="@dimen/address_field_margin"
+            android:layout_marginBottom="@dimen/address_field_bottom_margin"
             android:hint="@string/address"
-            android:layout_marginBottom="15dip"/>
+            />
 
         <EditText android:id="@+id/contactInfo"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:layout_marginBottom="15dip"
+            android:layout_margin="@dimen/contact_field_margin"
+            android:layout_marginBottom="@dimen/contact_field_bottom_margin"
             android:inputType="textEmailAddress"
             android:hint="@string/contact_info"/>
 
         <EditText android:id="@+id/availability"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:layout_marginBottom="15dip"
+            android:layout_margin="@dimen/availability_field_margin"
+            android:layout_marginBottom="@dimen/availability_filed_bottom_margin"
             android:hint="@string/availability"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="10dip"
+            android:paddingLeft="@dimen/accessibility_text"
             android:text="@string/accessibility"/>
         <Spinner
             android:id="@+id/accessibility"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:layout_marginBottom="15dip"
+            android:layout_margin="@dimen/accessibility_spinner_margin"
+            android:layout_marginBottom="@dimen/accessibility_spinner_bottom_margin"
             android:entries="@array/accessibility_array"
             android:prompt="@string/accessibility" />
+
         <EditText android:id="@+id/description"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:layout_marginBottom="15dip"
-            android:minLines="4"
-            android:maxLines="4"
+            android:layout_margin="@dimen/description_field_margin"
+            android:layout_marginBottom="@dimen/description_field_bottom_margin"
+            android:minLines="@dimen/description_min_lines"
+            android:maxLines="@dimen/description_max_lines"
             android:isScrollContainer="true"
             android:gravity="top"
             android:hint="@string/description"/>
+
         <Button android:id="@+id/add_studio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
