@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -58,9 +56,6 @@ public class MainActivity extends AppCompatActivity {
                 //Code to run when the about item is clicked
                 Intent aboutIntent = new Intent(this, AboutActivity.class);
                 startActivity(aboutIntent);
-                return true;
-            case R.id.logout:
-                // TODO: Add code to run when the logout item is clicked
                 return true;
             case R.id.action_settings:
                 //Code to run when the settings item is clicked
