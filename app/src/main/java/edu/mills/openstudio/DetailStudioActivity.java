@@ -52,8 +52,8 @@ public class DetailStudioActivity extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.add_studio:
-                Intent intent = new Intent(this, AddStudioActivity.class);
+            case R.id.about:
+                Intent intent = new Intent(this, AboutActivity.class);
                 startActivity(intent);
                 return true;
             case R.id.action_settings:
@@ -99,5 +99,7 @@ public class DetailStudioActivity extends Activity {
             }
         });
     }
+
+
 }
 

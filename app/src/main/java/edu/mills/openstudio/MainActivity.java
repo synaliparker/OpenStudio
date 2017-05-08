@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -60,9 +59,6 @@ public class MainActivity extends AppCompatActivity {
                 //Code to run when the about item is clicked
                 Intent aboutIntent = new Intent(this, AboutActivity.class);
                 startActivity(aboutIntent);
-                return true;
-            case R.id.logout:
-                // TODO: Add code to run when the logout item is clicked
                 return true;
             case R.id.action_settings:
                 //Code to run when the settings item is clicked
@@ -80,4 +76,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, FindStudioActivity.class);
         startActivity(intent);
     }
+
+
 }
