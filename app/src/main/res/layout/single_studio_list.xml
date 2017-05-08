@@ -4,26 +4,24 @@
     android:layout_height="wrap_content"
     android:orientation="vertical" >
 
-    <!-- Product id (id) - will be HIDDEN - used to pass to other activity -->
     <TextView
         android:id="@+id/id"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:visibility="gone" />
 
-    <!-- Name Label -->
     <TextView
         android:id="@+id/name"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="6dip"
-        android:textSize="17dip"
+        android:paddingTop="@dimen/top_padding"
+        android:textSize="@dimen/single_studio_text"
         android:textStyle="bold" />
     <TextView
         android:id="@+id/type"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textSize="17dip"
+        android:textSize="@dimen/single_studio_text"
         android:textColor="#6f7682"/>
 
 </LinearLayout>
