@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@color/black" >
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="@dimen/splash_logo"
+        android:layout_height="@dimen/splash_logo"
+        android:src="@drawable/open_studio_logo" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/splash_margin"
+        android:textSize="@dimen/splash_text"
+        android:textColor="@color/white"
+        android:gravity="center_horizontal"
+        android:text="@string/app_name" />
+
+</LinearLayout>

@@ -1,18 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.hfad.openstudio.MainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:design="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@color/main_bg"
+    tools:context="edu.mills.openstudio.MainActivity">
 
+    <ImageView
+        android:layout_width="@dimen/logo_size"
+        android:layout_height="@dimen/logo_size"
+        android:layout_marginTop="@dimen/logo_top_margin"
+        android:src="@drawable/open_studio_logo" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textColor="@color/white"
+        android:textSize="@dimen/title_text"
+        android:text="@string/app_name"
+        android:paddingBottom="@dimen/title_bottom_padding"/>
 
-</android.support.constraint.ConstraintLayout>
+    <Button
+        android:id="@+id/find_studios"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/surrounding_padding"
+        android:paddingLeft="@dimen/surrounding_padding"
+        android:paddingRight="@dimen/surrounding_padding"
+        android:background="@color/main_btn"
+        android:textColor="@color/white"
+        android:text="@string/find_studio_test_button"
+        android:onClick="onClickFindStudio" />
+
+    <Button
+        android:id="@+id/find_workshops"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/surrounding_padding"
+        android:paddingLeft="@dimen/surrounding_padding"
+        android:paddingRight="@dimen/surrounding_padding"
+        android:background="@color/main_btn"
+        android:textColor="@color/white"
+        android:text="@string/find_workshops" />
+
+    <Button
+        android:id="@+id/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/surrounding_padding"
+        android:paddingLeft="@dimen/surrounding_padding"
+        android:paddingRight="@dimen/surrounding_padding"
+        android:orientation="vertical"
+        android:background="@color/main_btn"
+        android:textColor="@color/white"
+        android:text="@string/tools" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            app:itemBackground="@color/black"
+            app:itemIconTint="@color/white"
+            app:itemTextColor="@color/white"
+            design:menu="@menu/bottom_nav_items"/>
+    </RelativeLayout>
+</LinearLayout>
